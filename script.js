@@ -152,16 +152,16 @@ function initHeroCanvas() {
       for (let j = i + 1; j < pts.length; j++) {
         const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
         if (d < link) {
-          ctx.strokeStyle = `rgba(94,234,212,${(1 - d / link) * 0.35})`;
+          ctx.strokeStyle = `rgba(255,138,61,${(1 - d / link) * 0.35})`;
           ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
       const md = Math.hypot(a.x - mouse.x, a.y - mouse.y);
       if (md < 200) {
-        ctx.strokeStyle = `rgba(129,140,248,${(1 - md / 200) * 0.6})`;
+        ctx.strokeStyle = `rgba(167,139,250,${(1 - md / 200) * 0.6})`;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
       }
-      ctx.fillStyle = 'rgba(232,237,243,0.8)';
+      ctx.fillStyle = 'rgba(242,238,247,0.8)';
       ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
     }
     requestAnimationFrame(draw);

@@ -218,3 +218,21 @@ function initMagnets() {
     btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
   });
 }
+
+// Scale the live previews of the concept websites to fit their frames
+(function initSitePreviews() {
+  const views = document.querySelectorAll('.site-view');
+  if (!views.length) return;
+  const fit = (view) => {
+    const scale = view.clientWidth / 1440;
+    view.style.setProperty('--scale', scale.toFixed(4));
+    view.style.setProperty('--peek', '360px');
+  };
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver((entries) => entries.forEach((e) => fit(e.target)));
+    views.forEach((v) => ro.observe(v));
+  } else {
+    views.forEach(fit);
+    window.addEventListener('resize', () => views.forEach(fit));
+  }
+})();

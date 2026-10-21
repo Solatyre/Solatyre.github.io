@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Ancoats Movement Clinic</title>
+<meta name="description" content="Physiotherapy in Ancoats, Manchester for back pain, sports injuries and recovery after surgery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: hero shows the patient's own recovery plan (the thing physio actually gives you); booking is a full section, conditions read like a clinical list, not a card kit */
+:root{
+  --bg:#f4f7f6; --surface:#ffffff; --ink:#10302b; --muted:#506a65; --line:#d6e2df;
+  --spruce:#1b5e54; --spruce-hover:#154b43; --on-spruce:#ffffff; --mint:#e2efeb; --mint-2:#cfe4de;
+  --apricot:#f0a35a; --on-apricot:#2b1a08; --rose:#c4553d;
+  --display:"Sora",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1a18; --surface:#142623; --ink:#e3eeeb; --muted:#97b0aa; --line:#24403b;
+  --spruce:#68c2b1; --spruce-hover:#82d1c2; --on-spruce:#08201c; --mint:#1a332f; --mint-2:#22423d;
+  --apricot:#f2b071; --on-apricot:#2b1a08; --rose:#ea8a72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1a18; --surface:#142623; --ink:#e3eeeb; --muted:#97b0aa; --line:#24403b;
+  --spruce:#68c2b1; --spruce-hover:#82d1c2; --on-spruce:#08201c; --mint:#1a332f; --mint-2:#22423d;
+  --apricot:#f2b071; --on-apricot:#2b1a08; --rose:#ea8a72; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--apricot);outline-offset:3px;border-radius:4px}
+
+.note{background:var(--spruce);color:var(--on-spruce);font-size:14px;text-align:center;padding-block:9px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:28px;min-height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:600 19px/1.1 var(--display);text-decoration:none;margin-right:auto;letter-spacing:-.02em}
+nav{display:flex;gap:26px;font-weight:500}
+nav a{text-decoration:none;color:var(--muted);padding-block:10px} nav a:hover{color:var(--ink)}
+.tel{font-weight:700;color:var(--spruce);text-decoration:none;font-variant-numeric:tabular-nums}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px;border-radius:999px;border:0;font:600 16px var(--body);cursor:pointer;text-decoration:none;transition:background-color .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--spruce);color:var(--on-spruce)} .btn-primary:hover{background:var(--spruce-hover)}
+.btn-quiet{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)} .btn-quiet:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;padding-block:64px 80px}
+.hero h1{font-size:clamp(38px,4.8vw,60px);line-height:1.06;font-weight:600}
+.hero .lede{font-size:20px;color:var(--muted);margin-top:22px;max-width:42ch}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.next{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:15px;color:var(--muted)}
+.next b{color:var(--ink)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--spruce);box-shadow:0 0 0 4px var(--mint-2)}
+
+.stage{position:relative;padding:0 0 270px 40px}
+.photo-wrap{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;max-width:100%;background:linear-gradient(160deg,var(--mint),var(--mint-2))}
+.photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.credit{position:absolute;right:12px;bottom:10px;font-size:12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);text-decoration:none}
+.plan{position:absolute;left:0;bottom:0;width:min(350px,64%);background:var(--surface);border-radius:20px;padding:22px;box-shadow:0 30px 60px -30px rgba(10,40,35,.5)}
+.plan-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.plan-top h3{font-size:19px;font-weight:600}
+.plan-top p{font-size:14px;color:var(--muted);margin-top:2px}
+.ring{position:relative;width:64px;height:64px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font:600 15px var(--display);font-variant-numeric:tabular-nums}
+.ex{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:8px}
+.ex li label{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:var(--bg);cursor:pointer;min-height:56px}
+.ex input{appearance:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:var(--surface);flex:none;display:grid;place-items:center;cursor:pointer;margin:0}
+.ex input:checked{background:var(--spruce);border-color:var(--spruce)}
+.ex input:checked::after{content:"";width:6px;height:11px;border:solid var(--on-spruce);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.ex .name{font-weight:600;flex:1}
+.ex input:checked ~ .name{color:var(--muted);text-decoration:line-through}
+.ex .dose{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pain{position:absolute;right:0;bottom:56px;background:var(--surface);border-radius:16px;padding:16px 18px;box-shadow:0 20px 40px -24px rgba(10,40,35,.5);width:min(210px,34%)}
+.pain p{font-size:13px;color:var(--muted)}
+.pain b{font:600 22px var(--display)}
+.pain svg{display:block;margin-top:8px;width:100%;height:auto}
+
+.trust{border-block:1px solid var(--line);background:var(--surface)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 28px;padding-block:22px;font-size:15px;color:var(--muted);line-height:1.35}
+.trust span{display:flex;align-items:center;gap:10px}
+.trust svg{color:var(--spruce);flex:none}
+@media (max-width:980px){.trust .wrap{grid-template-columns:1fr 1fr}}
+
+section{padding-block:96px}
+.h2{font-size:clamp(30px,3.6vw,44px);line-height:1.1;font-weight:600}
+.sub{color:var(--muted);font-size:18px;max-width:54ch;margin-top:14px}
+
+/* conditions list */
+.side-photo{margin:32px 0 0}
+.side-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:20px;display:block;background:var(--mint)}
+.side-photo figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.cond-wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:start}
+.conds{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.cond{padding:22px 24px 22px 0;border-bottom:1px solid var(--line)}
+.cond:nth-child(odd){border-right:1px solid var(--line)}
+.cond:nth-child(even){padding-left:24px;padding-right:0}
+.cond h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.cond p{color:var(--muted);font-size:15px;margin-top:4px}
+.cond .typ{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--spruce);background:var(--mint);padding:3px 10px;border-radius:99px}
+
+/* booking */
+.bookband{background:var(--mint)}
+.book-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:start;margin-top:40px}
+.book{background:var(--surface);border-radius:24px;padding:32px;min-width:0}
+.stepper{display:flex;gap:8px;margin-bottom:24px}
+.stepper span{flex:1;height:5px;border-radius:9px;background:var(--line);transition:background-color .25s ease}
+.stepper span.on{background:var(--spruce)}
+.q{font:600 17px var(--display);margin:24px 0 12px;letter-spacing:-.01em}
+.q:first-of-type{margin-top:0}
+.treat{display:grid;gap:10px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--surface);color:var(--ink);font:inherit;text-align:left;cursor:pointer;width:100%;min-height:64px}
+.opt small{display:block;color:var(--muted);font-size:14px}
+.opt b{font-variant-numeric:tabular-nums}
+.opt[aria-pressed="true"]{border-color:var(--spruce);background:var(--mint);box-shadow:inset 0 0 0 1px var(--spruce)}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.day{border:1.5px solid var(--line);border-radius:14px;padding:10px 4px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;min-height:64px;text-align:center}
+.day small{display:block;font-size:13px;color:var(--muted)}
+.day b{font:600 20px var(--display)}
+.day[aria-pressed="true"]{background:var(--spruce);border-color:var(--spruce);color:var(--on-spruce)}
+.day[aria-pressed="true"] small{color:inherit;opacity:.85}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{min-height:46px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:600 15px var(--body);cursor:pointer;font-variant-numeric:tabular-nums}
+.slot[aria-pressed="true"]{background:var(--apricot);border-color:var(--apricot);color:var(--on-apricot)}
+.slot:disabled{color:var(--muted);background:var(--bg);border-style:dashed;cursor:not-allowed;text-decoration:line-through}
+.sum{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.sum p{color:var(--muted);font-size:15px} .sum p b{color:var(--ink)}
+.ok{margin-top:16px;padding:16px;border-radius:14px;background:var(--mint);font-weight:600;display:flex;gap:12px;align-items:flex-start}
+.ok svg{flex:none;color:var(--spruce);margin-top:2px}
+
+.prices{display:grid;gap:24px}
+.prices h3{font-size:20px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:13px 0;border-bottom:1px solid var(--mint-2)} td:last-child{text-align:right;font-weight:700}
+td small{display:block;color:var(--muted);font-size:14px;font-weight:400}
+.expect{display:grid;gap:14px;list-style:none;padding:0;margin:0}
+.expect li{display:flex;gap:12px}
+.expect svg{flex:none;color:var(--spruce);margin-top:3px}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:44px}
+.person{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
+.person .pic{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font:600 26px/1 var(--display);letter-spacing:-.02em;background:var(--mint);color:var(--spruce);box-shadow:0 0 0 4px var(--surface),0 0 0 6px var(--mint-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tags span{font-size:13px;font-weight:600;padding:4px 10px;border-radius:99px;background:var(--bg);color:var(--muted)}
+.person h3{font-size:20px;font-weight:600;margin-top:16px}
+.person .role{color:var(--spruce);font-weight:600;font-size:15px}
+.person p{color:var(--muted);font-size:15px;margin-top:6px}
+
+/* review */
+.review{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:center;background:var(--spruce);color:var(--on-spruce);border-radius:32px;padding:56px}
+.review blockquote{margin:0;font:500 clamp(24px,2.8vw,32px)/1.35 var(--display);letter-spacing:-.015em}
+.review cite{display:block;font:500 16px var(--body);font-style:normal;margin-top:20px;opacity:.85}
+.score{display:grid;gap:6px;border-left:1px solid color-mix(in srgb,var(--on-spruce) 30%,transparent);padding-left:40px}
+.score b{font:600 64px/1 var(--display)}
+.score .st{display:flex;gap:3px;color:var(--apricot)}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
+.hours td:last-child{font-weight:500;color:var(--muted)}
+.hours tr.today td{color:var(--ink);font-weight:700}
+.map{border-radius:20px;background:var(--mint);aspect-ratio:16/10;max-width:100%;position:relative;overflow:hidden;margin-top:24px}
+.map svg{width:100%;height:100%;display:block}
+
+footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .hero,.cond-wrap,.book-wrap,.visit,.review{grid-template-columns:minmax(0,1fr)}
+  nav{display:none}
+  .score{border-left:0;padding-left:0;border-top:1px solid color-mix(in srgb,var(--on-spruce) 30%,transparent);padding-top:24px}
+}
+@media (max-width:640px){
+  section{padding-block:64px}
+  .hero{padding-block:40px 56px}
+  .conds,.team{grid-template-columns:minmax(0,1fr)}
+  .cond:nth-child(odd){border-right:0}
+  .cond:nth-child(even){padding-left:0}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .book{padding:20px}
+  .review{padding:32px}
+  .stage{padding:0}
+  .plan{position:relative;width:auto;margin:-56px 12px 0}
+  .pain{display:none}
+  .tel{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="note"><div class="wrap">Concept project. Ancoats Movement Clinic is a fictional clinic, designed and built by <a href="/#websites" style="color:inherit;font-weight:600">Sulaiman Bukhsh</a>.</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#top"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--spruce)"/><path d="M8.5 21c2.5-6.5 12.5-6.5 15 0" stroke="var(--on-spruce)" stroke-width="2.8" fill="none" stroke-linecap="round"/><circle cx="16" cy="10.5" r="3" fill="var(--apricot)"/></svg>Ancoats Movement<br>Clinic</a>
+  <nav aria-label="Main"><a href="#treat">What we treat</a><a href="#book">Prices</a><a href="#team">Our physios</a><a href="#visit">Find us</a></nav>
+  <a class="tel" href="tel:01615550192">0161 555 0192</a>
+  <a class="btn btn-primary" href="#book" style="min-height:44px">Book</a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Physiotherapy that ends with you moving freely again.</h1>
+    <p class="lede">Hands-on treatment and an exercise plan built around your life, from chartered physios who specialise in back pain, sport and recovery after surgery.</p>
+    <div class="actions"><a class="btn btn-primary" href="#book">Book an assessment</a><a class="btn btn-quiet" href="#treat">What we treat</a></div>
+    <p class="next"><span class="dot" aria-hidden="true"></span><span>Next available appointment: <b id="next-slot">tomorrow at 9:00</b></span></p>
+  </div>
+  <div class="stage">
+    <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=1200&q=80&auto=format&fit=crop" alt="A physiotherapist bends a patient's knee during a treatment session" width="1200" height="900" fetchpriority="high" onerror="this.parentNode.querySelector('.credit')?.remove();this.remove()"><a class="credit" href="https://unsplash.com/photos/pbUWW-CBoqY" target="_blank" rel="noopener">Photo: yury kirillov, Unsplash</a></div>
+    <div class="plan" aria-label="Example recovery plan">
+      <div class="plan-top">
+        <div><h3>Your knee recovery plan</h3><p>Week 3 of 6, set by Daniel</p></div>
+        <div class="ring"><svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--mint)" stroke-width="7"/><circle id="ring" cx="32" cy="32" r="27" fill="none" stroke="var(--spruce)" stroke-width="7" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .4s ease"/></svg><span id="ring-pct">0%</span></div>
+      </div>
+      <ul class="ex">
+        <li><label for="e1"><input type="checkbox" id="e1" checked><span class="name">Wall sit</span><span class="dose">3 × 30 sec</span></label></li>
+        <li><label for="e2"><input type="checkbox" id="e2" checked><span class="name">Step-ups</span><span class="dose">3 × 10 each leg</span></label></li>
+        <li><label for="e3"><input type="checkbox" id="e3"><span class="name">Straight leg raise</span><span class="dose">3 × 12</span></label></li>
+        <li><label for="e4"><input type="checkbox" id="e4"><span class="name">Calf raises</span><span class="dose">3 × 15</span></label></li>
+      </ul>
+    </div>
+    <div class="pain" aria-label="Pain score improved from 7 to 3 over three weeks">
+      <p>Pain score, out of 10</p>
+      <b>7 to 3</b>
+      <svg viewBox="0 0 200 54" aria-hidden="true"><polyline points="8,10 62,20 116,32 170,44" fill="none" stroke="var(--apricot)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><g fill="var(--surface)" stroke="var(--apricot)" stroke-width="2.5"><circle cx="8" cy="10" r="4"/><circle cx="62" cy="20" r="4"/><circle cx="116" cy="32" r="4"/><circle cx="170" cy="44" r="5" fill="var(--apricot)"/></g></svg>
+    </div>
+  </div>
+</div>
+
+<div class="trust"><div class="wrap">
+  <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Every physio HCPC registered</span>
+  <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Most health insurers accepted</span>
+  <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open until 8pm, four nights a week</span>
+  <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10z"/><path d="M10 20v-6h4v6"/></svg>Step-free access and free parking</span>
+</div></div>
+
+<section id="treat"><div class="wrap cond-wrap">
+  <div>
+    <h2 class="h2">What we treat</h2>
+    <p class="sub">Your first appointment includes a full assessment, a diagnosis in plain English and an exercise plan you can follow at home. Most people need fewer sessions than they expect.</p>
+    <figure class="side-photo"><img src="https://images.unsplash.com/photo-1706353399656-210cca727a33?w=900&q=80&auto=format&fit=crop" alt="A physiotherapist works on a patient's back and shoulder on a treatment couch" width="900" height="675" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Photo: Marc Zeman, Unsplash</figcaption></figure>
+  </div>
+  <div class="conds">
+    <div class="cond"><h3>Back and neck pain</h3><p>Sciatica, disc problems, desk-work stiffness</p><span class="typ">Usually 4 to 6 sessions</span></div>
+    <div class="cond"><h3>Sports injuries</h3><p>Sprains, hamstring and calf strains, runner's knee</p><span class="typ">Usually 3 to 6 sessions</span></div>
+    <div class="cond"><h3>Shoulder pain</h3><p>Frozen shoulder, rotator cuff, impingement</p><span class="typ">Usually 6 to 8 sessions</span></div>
+    <div class="cond"><h3>After surgery</h3><p>Knee and hip replacements, ACL, shoulder repairs</p><span class="typ">Usually 8 to 12 sessions</span></div>
+    <div class="cond"><h3>Tendon problems</h3><p>Achilles, tennis elbow, plantar fasciitis</p><span class="typ">Usually 4 to 8 sessions</span></div>
+    <div class="cond"><h3>Pregnancy and postnatal</h3><p>Pelvic girdle pain, return to exercise</p><span class="typ">Usually 3 to 5 sessions</span></div>
+  </div>
+</div></section>
+
+<section id="book" class="bookband"><div class="wrap">
+  <h2 class="h2">Book an appointment</h2>
+  <p class="sub">Pick a treatment, a day and a time. You'll get a confirmation email and a reminder the day before.</p>
+  <div class="book-wrap">
+    <div class="book">
+      <div class="stepper" aria-hidden="true"><span id="s1" class="on"></span><span id="s2"></span><span id="s3"></span></div>
+      <p class="q">Treatment</p>
+      <div class="treat" id="treats"></div>
+      <p class="q">Day</p>
+      <div class="days" id="days"></div>
+      <p class="q">Time</p>
+      <div class="slots" id="slots"></div>
+      <div class="sum"><p id="sum">Choose a time to continue.</p><button class="btn btn-primary" id="go" type="button" disabled>Confirm booking</button></div>
+      <div class="ok" id="ok" hidden role="status"></div>
+    </div>
+    <div class="prices">
+      <div>
+        <h3>Prices</h3>
+        <table><tbody>
+          <tr><td>Initial assessment<small>45 minutes</small></td><td>£65</td></tr>
+          <tr><td>Follow-up treatment<small>30 minutes</small></td><td>£50</td></tr>
+          <tr><td>Sports massage<small>45 minutes</small></td><td>£55</td></tr>
+          <tr><td>Block of five follow-ups<small>Use within 12 weeks</small></td><td>£225</td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <h3 style="margin-bottom:14px">At your first visit</h3>
+        <ul class="expect">
+          <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Wear shorts or loose clothes so we can see the area</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Bring any scan results or surgery notes</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Free cancellation up to 24 hours before</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="team"><div class="wrap">
+  <h2 class="h2">Our physios</h2>
+  <p class="sub">You see the same physio at every visit, so you never explain your injury twice.</p>
+  <div class="team">
+    <div class="person"><div class="pic" aria-hidden="true">HO</div><h3>Hannah Okafor</h3><p class="role">Clinical lead</p><p>Twelve years in NHS musculoskeletal outpatients before opening the clinic.</p><div class="tags"><span>Back pain</span><span>Sciatica</span><span>Neck pain</span></div></div>
+    <div class="person"><div class="pic" aria-hidden="true">DR</div><h3>Daniel Reyes</h3><p class="role">Sports physiotherapist</p><p>Former academy football physio. Runs gait assessments and return-to-sport plans.</p><div class="tags"><span>Running</span><span>Knee</span><span>Ankle</span></div></div>
+    <div class="person"><div class="pic" aria-hidden="true">AP</div><h3>Aisha Patel</h3><p class="role">Post-surgery rehabilitation</p><p>Works alongside orthopaedic surgeons across Greater Manchester on joint replacements.</p><div class="tags"><span>Hip</span><span>Knee</span><span>Shoulder</span></div></div>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="review">
+  <div><blockquote>I'd had knee pain for two years and assumed it was just age. Six sessions with Daniel and I ran my first 10k.</blockquote><cite>Sample review written for this concept</cite></div>
+  <div class="score"><b>4.9</b><span class="st" id="st" aria-label="5 stars"></span><span>from 212 patient reviews</span></div>
+</div></div>
+
+<section id="visit"><div class="wrap visit">
+  <div>
+    <h2 class="h2">Find us</h2>
+    <p class="sub">Ground floor of Cotton Mill Yard, two minutes' walk from the New Islington tram stop. Patients park free in the rear courtyard.</p>
+    <div class="map" role="img" aria-label="Simple map showing the clinic near New Islington tram stop">
+      <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="250" fill="var(--mint)"/>
+        <path d="M-10 170 C80 150 160 190 240 160 S360 120 420 140" stroke="var(--mint-2)" stroke-width="22" fill="none"/>
+        <g stroke="var(--surface)" stroke-width="10" fill="none" stroke-linecap="round"><path d="M0 80H400"/><path d="M120 0V250"/><path d="M280 0 230 250"/><path d="M0 210 400 190"/></g>
+        <path d="M30 30 380 230" stroke="var(--muted)" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+        <circle cx="300" cy="172" r="8" fill="var(--surface)" stroke="var(--muted)" stroke-width="3"/>
+        <text x="314" y="166" font-size="13" font-family="Hanken Grotesk,system-ui" fill="var(--muted)">New Islington</text>
+        <path d="M190 96c0-14 22-14 22 0 0 12-11 24-11 24s-11-12-11-24z" fill="var(--rose)"/><circle cx="201" cy="96" r="4.5" fill="var(--surface)"/>
+        <text x="220" y="104" font-size="14" font-weight="700" font-family="Hanken Grotesk,system-ui" fill="var(--ink)">Clinic</text>
+      </svg>
+    </div>
+  </div>
+  <div>
+    <h3 style="font-size:20px;font-weight:600;margin-bottom:8px">Opening hours</h3>
+    <table class="hours"><tbody id="hours"></tbody></table>
+    <p style="margin-top:24px;font-weight:600">14 Cotton Mill Yard, Ancoats, Manchester</p>
+    <p style="color:var(--muted)">Fictional address used for this concept</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ancoats Movement Clinic. A fictional clinic shown for design purposes. Photos from Unsplash.</span><span>Design and build by Sulaiman Bukhsh</span></div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+/* recovery plan ring */
+const boxes=[...document.querySelectorAll(".ex input")];
+function ring(){const done=boxes.filter(b=>b.checked).length,pct=Math.round(done/boxes.length*100);
+  $("ring").style.strokeDashoffset=169.6*(1-done/boxes.length);$("ring-pct").textContent=pct+"%"}
+boxes.forEach(b=>b.addEventListener("change",ring));ring();
+$("st").innerHTML=Array(5).fill('<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>').join("");
+
+/* booking */
+const treatments=[{id:"ia",n:"Initial assessment",m:45,p:65},{id:"fu",n:"Follow-up treatment",m:30,p:50},{id:"sm",n:"Sports massage",m:45,p:55}];
+const times=["08:00","09:00","10:30","12:00","13:30","15:00","16:30","18:00"];
+const days=[];{let x=new Date();while(days.length<6){x=new Date(x.getFullYear(),x.getMonth(),x.getDate()+1);if(x.getDay()!==0)days.push(x)}}
+const taken=(d,i)=>(d*5+i*3)%7===0||(d+i)%9===0;
+const S={t:"ia",d:0,s:null};
+const fmt=(d,o)=>d.toLocaleDateString("en-GB",o);
+function press(e,on){e.setAttribute("aria-pressed",String(on))}
+function btn(cls,html,on,click){const b=document.createElement("button");b.type="button";b.className=cls;b.innerHTML=html;press(b,on);b.onclick=click;return b}
+function render(){
+  $("treats").replaceChildren(...treatments.map(t=>btn("opt",`<span>${t.n}<small>${t.m} minutes</small></span><b>£${t.p}</b>`,S.t===t.id,()=>{S.t=t.id;render()})));
+  $("days").replaceChildren(...days.map((d,i)=>{const b=btn("day",`<small>${fmt(d,{weekday:"short"})}</small><b>${d.getDate()}</b>`,S.d===i,()=>{S.d=i;S.s=null;render()});b.setAttribute("aria-label",fmt(d,{weekday:"long",day:"numeric",month:"long"}));return b}));
+  const sat=days[S.d].getDay()===6;
+  $("slots").replaceChildren(...times.filter((_,i)=>!sat||i<4).map((t,i)=>{const b=btn("slot",t,S.s===t,()=>{S.s=t;render()});b.disabled=taken(S.d,i);if(b.disabled)b.setAttribute("aria-label",t+", booked");return b}));
+  const tr=treatments.find(x=>x.id===S.t);
+  $("go").disabled=!S.s;
+  $("s2").className="on";$("s3").className=S.s?"on":"";
+  $("sum").innerHTML=S.s?`<b>${tr.n}</b> on ${fmt(days[S.d],{weekday:"long",day:"numeric",month:"long"})} at ${S.s}, £${tr.p}`:"Choose a time to continue.";
+}
+$("go").onclick=()=>{const tr=treatments.find(x=>x.id===S.t);$("ok").hidden=false;
+  $("ok").innerHTML=`<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Booked: ${tr.n}, ${fmt(days[S.d],{weekday:"long",day:"numeric",month:"long"})} at ${S.s}. This is a demo, so no appointment was made.</span>`};
+render();
+/* next slot + hours */
+{for(let d=0;d<days.length;d++){const i=times.findIndex((_,k)=>!taken(d,k));if(i>=0){$("next-slot").textContent=(d===0?"tomorrow":fmt(days[d],{weekday:"long"}))+" at "+times[i].replace(/^0/,"");break}}}
+const hours=[["Monday","7:30 to 20:00"],["Tuesday","7:30 to 20:00"],["Wednesday","7:30 to 20:00"],["Thursday","7:30 to 20:00"],["Friday","7:30 to 18:00"],["Saturday","8:30 to 13:00"],["Sunday","Closed"]];
+const today=(new Date().getDay()+6)%7;
+$("hours").innerHTML=hours.map((h,i)=>`<tr${i===today?' class="today"':''}><td>${h[0]}${i===today?" (today)":""}</td><td>${h[1]}</td></tr>`).join("");
+</script>
+</body>
+</html>

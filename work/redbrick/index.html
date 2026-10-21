@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Redbrick Sourcing</title>
+<meta name="description" content="Redbrick Sourcing finds and packages below-market-value property deals across Greater Manchester for investors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: split hero with an illustrated terrace street (the product is houses), then a filterable deal grid where every card draws its own street */
+:root{
+  --bg:#f3f5f6; --surface:#ffffff; --ink:#172331; --muted:#566271; --line:#dce1e5;
+  --brick:#a3402a; --brick-hover:#8c3522; --on-brick:#ffffff;
+  --band:#1d2f42; --on-band:#eef2f5; --band-muted:#a9b8c6; --band-line:#334a60;
+  --good:#2f7553; --good-bg:#e3f1e9; --hold:#8a5a12; --hold-bg:#f6ecd9;
+  --sky:#dfe8ee; --sky2:#c9d8e2; --roof:#3d4a57; --b1:#b5543a; --b2:#9e4630; --b3:#c3684b;
+  --frame:#f4f1ec; --glass:#7f97ab; --pave:#a9b3bb;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:6px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f161d; --surface:#16202a; --ink:#e7ecf0; --muted:#9aa8b5; --line:#253240;
+  --brick:#e0765b; --brick-hover:#ea8a71; --on-brick:#1a0d09;
+  --band:#0a1118; --on-band:#e7ecf0; --band-muted:#8f9fae; --band-line:#22303d;
+  --good:#6fc79a; --good-bg:#16302a; --hold:#e2b062; --hold-bg:#33291a;
+  --sky:#1c2a37; --sky2:#223444; --roof:#11181f; --b1:#8f4430; --b2:#7a3926; --b3:#9d5039;
+  --frame:#d9d4cc; --glass:#3b5266; --pave:#3a4652; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161d; --surface:#16202a; --ink:#e7ecf0; --muted:#9aa8b5; --line:#253240;
+  --brick:#e0765b; --brick-hover:#ea8a71; --on-brick:#1a0d09;
+  --band:#0a1118; --on-band:#e7ecf0; --band-muted:#8f9fae; --band-line:#22303d;
+  --good:#6fc79a; --good-bg:#16302a; --hold:#e2b062; --hold-bg:#33291a;
+  --sky:#1c2a37; --sky2:#223444; --roof:#11181f; --b1:#8f4430; --b2:#7a3926; --b3:#9d5039;
+  --frame:#d9d4cc; --glass:#3b5266; --pave:#3a4652; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brick);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0}
+
+.note{background:var(--band);color:var(--band-muted);font-size:14px;text-align:center;padding-block:9px}
+.note strong{color:var(--on-band);font-weight:600}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:32px;min-height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 21px/1 var(--display);font-stretch:88%;letter-spacing:-.01em;margin-right:auto}
+nav{display:flex;gap:28px;font-weight:500;font-size:16px}
+nav a{text-decoration:none;color:var(--muted);padding-block:10px}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--r);border:0;font:600 16px/1 var(--body);text-decoration:none;cursor:pointer;transition:background-color .15s ease,box-shadow .15s ease}
+.btn-primary{background:var(--brick);color:var(--on-brick)}
+.btn-primary:hover{background:var(--brick-hover)}
+.btn-quiet{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-quiet:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-sm{min-height:44px;padding:0 16px;font-size:15px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:56px;align-items:center;padding-block:64px 72px}
+.hero h1{font-size:clamp(40px,5.4vw,66px);line-height:1.02;font-weight:750;font-stretch:84%;letter-spacing:-.02em}
+.hero .lede{font-size:20px;color:var(--muted);max-width:40ch;margin-top:22px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.rating{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:15px;color:var(--muted)}
+.stars{display:flex;gap:2px;color:var(--brick)}
+.scene{position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,var(--sky),var(--sky2));aspect-ratio:5/4;max-width:100%}
+.scene svg{position:absolute;inset:auto 0 0 0;width:100%;height:auto;display:block}
+.scene .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,29,.18),transparent 35%);pointer-events:none}
+.credit{position:absolute;right:10px;bottom:8px;z-index:2;font-size:12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);text-decoration:none}
+.dealtag{position:absolute;left:24px;top:24px;background:var(--surface);border-radius:8px;padding:16px 18px;box-shadow:0 18px 40px -18px rgba(10,20,30,.45);min-width:220px}
+.dealtag .row1{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.dealtag .addr{font:700 19px/1.2 var(--display);font-stretch:90%;margin-top:6px}
+.dealtag .figs{display:flex;gap:20px;margin-top:12px;font-variant-numeric:tabular-nums}
+.dealtag .figs span{display:block;font-size:13px;color:var(--muted)}
+.dealtag .figs b{font-size:17px}
+.dealtag .figs .yield b{color:var(--good)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:3px 9px;border-radius:99px}
+.chip.ok{background:var(--good-bg);color:var(--good)}
+.chip.hold{background:var(--hold-bg);color:var(--hold)}
+.chip.ok::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* trust strip */
+.trust{border-block:1px solid var(--line);background:var(--surface)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:22px}
+.trust div{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);line-height:1.35}
+.trust svg{flex:none;color:var(--ink)}
+
+section{padding-block:88px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.head h2,.h2{font-size:clamp(32px,3.8vw,46px);line-height:1.05;font-weight:720;font-stretch:86%;letter-spacing:-.015em}
+.head p,.sub{color:var(--muted);max-width:56ch;margin-top:12px;font-size:18px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{min-height:44px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:500 15px var(--body);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+.deals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.deal{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.deal .thumb{position:relative;background:linear-gradient(180deg,var(--sky),var(--sky2));aspect-ratio:8/5;max-width:100%}
+.deal .thumb svg{position:absolute;inset:auto 0 0;width:100%;height:auto}
+.deal .thumb .chip{position:absolute;top:12px;left:12px}
+.deal .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.deal h3{font-size:21px;font-weight:700;font-stretch:90%;line-height:1.15}
+.deal .where{color:var(--muted);font-size:15px;margin-top:4px}
+.deal dl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0;padding-block:14px;border-block:1px solid var(--line);font-variant-numeric:tabular-nums}
+.deal dt{font-size:13px;color:var(--muted)}
+.deal dd{margin:0;font-weight:700;font-size:17px}
+.deal dd.y{color:var(--good)}
+.deal .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto}
+.deal .fee{font-size:14px;color:var(--muted)}
+
+/* calculator band */
+.band{background:var(--band);color:var(--on-band)}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.band .sub{color:var(--band-muted)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+label{display:grid;gap:7px;font-size:15px;font-weight:600}
+.band label{color:var(--on-band)}
+.input{position:relative;display:flex;align-items:center}
+.input span{position:absolute;left:14px;color:var(--muted);pointer-events:none;font-weight:500}
+input,select,textarea{font:17px var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);min-height:48px;padding:10px 14px;width:100%;min-width:0}
+.input input{padding-left:30px}
+.input.pct input{padding-left:14px;padding-right:30px}
+.input.pct span{left:auto;right:14px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px color-mix(in srgb,var(--brick) 25%,transparent)}
+.band input,.band select{background:color-mix(in srgb,var(--on-band) 6%,transparent);border-color:var(--band-line);color:var(--on-band)}
+.band .input span{color:var(--band-muted)}
+.result{background:var(--surface);color:var(--ink);border-radius:10px;padding:32px}
+.result .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.result .top b{font:750 56px/1 var(--display);font-stretch:85%;font-variant-numeric:tabular-nums}
+.result .top span{color:var(--muted);font-size:15px;max-width:16ch}
+.result dl{margin:0;display:grid;gap:0}
+.result dl div{display:flex;justify-content:space-between;gap:16px;padding-block:13px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.result dt{color:var(--muted)} .result dd{margin:0;font-weight:700}
+.verdict{margin-top:18px;padding:12px 14px;border-radius:var(--r);font-size:15px;font-weight:600}
+.small{font-size:14px;color:var(--muted);margin-top:14px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;counter-reset:s}
+.step{position:relative;padding-top:28px;border-top:2px solid var(--ink)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-17px;left:0;width:32px;height:32px;border-radius:50%;background:var(--brick);color:var(--on-brick);display:grid;place-items:center;font:700 15px var(--body)}
+.step h3{font-size:23px;font-weight:700;font-stretch:90%}
+.step p{color:var(--muted);margin-top:8px}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:32px;display:flex;flex-direction:column;gap:22px}
+blockquote p{font:500 22px/1.4 var(--display);font-stretch:95%}
+.who{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted)}
+.who b{display:block;color:var(--ink)}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--on-brick);background:var(--brick);flex:none}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px;font-weight:600;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary svg{flex:none;transition:transform .2s ease;color:var(--muted)}
+details[open] summary svg{transform:rotate(45deg)}
+details p{color:var(--muted);padding-bottom:22px;max-width:62ch}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:48px}
+form{display:grid;gap:18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.err{color:var(--brick);font-size:14px;font-weight:500}
+.done{background:var(--good-bg);color:var(--good);padding:16px;border-radius:var(--r);font-weight:600}
+.contact ul{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px}
+.contact li{display:flex;gap:12px;color:var(--muted)}
+.contact li svg{flex:none;color:var(--good);margin-top:3px}
+
+footer{border-top:1px solid var(--line);padding-block:48px 36px;color:var(--muted);font-size:15px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.cols h4{color:var(--ink);font-size:15px;margin:0 0 12px}
+.cols a{display:block;text-decoration:none;padding-block:4px}
+.cols a:hover{color:var(--ink)}
+.legal{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .hero,.calc,.faq,.contact{grid-template-columns:minmax(0,1fr)}
+  .deals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  nav{display:none}
+  .hero{padding-block:40px 56px}
+}
+@media (max-width:640px){
+  .deals,.steps,.quotes,.two,.fields,.cols{grid-template-columns:minmax(0,1fr)}
+  .contact{padding:24px}
+  section{padding-block:64px}
+  .dealtag{left:12px;top:12px;min-width:0;padding:12px 14px}
+  .dealtag .figs{gap:14px}
+  .result .top b{font-size:44px}
+  .head-cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="note"><div class="wrap"><strong>Concept project.</strong> Redbrick Sourcing is a fictional business, designed and built by <a href="/#websites" style="color:inherit;font-weight:600">Sulaiman Bukhsh</a>.</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#top" aria-label="Redbrick Sourcing home">
+    <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="12" width="28" height="17" rx="2" fill="var(--brick)"/><path d="M15 2 1 12h28z" fill="var(--ink)"/><rect x="12" y="19" width="6" height="10" fill="var(--surface)"/></svg>
+    Redbrick Sourcing
+  </a>
+  <nav aria-label="Main"><a href="#deals">Deals</a><a href="#how">How it works</a><a href="#calculator">Calculator</a><a href="#faq">FAQ</a></nav>
+  <a class="btn btn-primary btn-sm head-cta" href="#contact">Join the investor list</a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Below-market property deals in Manchester, checked before they reach you.</h1>
+    <p class="lede">We find buy-to-lets, HMOs and serviced accommodation units under market value, then send you a deal pack with comparables, rental valuations and a priced refurb.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#deals">See available deals</a>
+      <a class="btn btn-quiet" href="#calculator">Run your own numbers</a>
+    </div>
+    <div class="rating">
+      <span class="stars" aria-hidden="true"></span>
+      <span>Rated 4.9 out of 5 by 63 investors in 2026</span>
+    </div>
+  </div>
+  <div class="scene">
+    <svg id="hero-street" viewBox="0 0 600 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg>
+    <img class="photo" src="https://images.unsplash.com/photo-1568293207619-df44ae062a9c?w=1400&q=80&auto=format&fit=crop" alt="A row of red-brick terraced houses with chimneys under a blue sky" width="1400" height="1120" fetchpriority="high" onerror="this.remove();document.querySelector('.credit')?.remove()">
+    <a class="credit" href="https://unsplash.com/photos/fFUBw5bF38s" target="_blank" rel="noopener">Photo: Greg Willson, Unsplash</a>
+    <div class="dealtag">
+      <div class="row1"><span>Just listed</span><span class="chip ok">Available</span></div>
+      <div class="addr">3-bed terrace, Eccles</div>
+      <div class="figs"><div><span>Price</span><b>£148,000</b></div><div class="yield"><span>Gross yield</span><b>9.3%</b></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust"><div class="wrap">
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Member of The Property Ombudsman</div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>Client money protection</div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>AML supervised by HMRC</div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Registered with the ICO</div>
+</div></div>
+
+<section id="deals"><div class="wrap">
+  <div class="head">
+    <div><h2>Deals available now</h2><p>Every figure below comes from the deal pack. Request one and we'll send the full numbers within the hour.</p></div>
+    <div class="filters" role="group" aria-label="Filter deals by strategy">
+      <button type="button" data-f="all" aria-pressed="true">All deals</button>
+      <button type="button" data-f="btl" aria-pressed="false">Buy-to-let</button>
+      <button type="button" data-f="hmo" aria-pressed="false">HMO</button>
+      <button type="button" data-f="sa" aria-pressed="false">Serviced accommodation</button>
+    </div>
+  </div>
+  <div class="deals" id="deal-grid"></div>
+</div></section>
+
+<section id="calculator" class="band"><div class="wrap calc">
+  <div>
+    <h2 class="h2">Check a deal's numbers yourself</h2>
+    <p class="sub">Stamp duty uses the England rates for additional properties, including the 5% surcharge. Change any figure and the results update.</p>
+    <div class="fields">
+      <label for="price">Purchase price<div class="input"><span>£</span><input id="price" type="number" inputmode="numeric" value="148000" min="0" step="1000"></div></label>
+      <label for="rent">Monthly rent<div class="input"><span>£</span><input id="rent" type="number" inputmode="numeric" value="1150" min="0" step="25"></div></label>
+      <label for="refurb">Refurb budget<div class="input"><span>£</span><input id="refurb" type="number" inputmode="numeric" value="12000" min="0" step="500"></div></label>
+      <label for="deposit">Deposit<select id="deposit"><option value="0.25" selected>25% mortgage deposit</option><option value="0.3">30% mortgage deposit</option><option value="0.4">40% mortgage deposit</option><option value="1">Cash purchase</option></select></label>
+      <label for="rate">Mortgage rate<div class="input pct"><input id="rate" type="number" value="5.2" min="0" step="0.1"><span>%</span></div></label>
+      <label for="fee">Sourcing fee<div class="input"><span>£</span><input id="fee" type="number" inputmode="numeric" value="3000" min="0" step="250"></div></label>
+    </div>
+  </div>
+  <div class="result" aria-live="polite">
+    <div class="top"><span>Return on the cash you put in, per year</span><b id="o-roi">–</b></div>
+    <dl>
+      <div><dt>Gross yield</dt><dd id="o-yield">–</dd></div>
+      <div><dt>Stamp duty</dt><dd id="o-sdlt">–</dd></div>
+      <div><dt>Total cash needed</dt><dd id="o-cash">–</dd></div>
+      <div><dt>Monthly profit after costs</dt><dd id="o-flow">–</dd></div>
+    </dl>
+    <div class="verdict" id="verdict"></div>
+    <p class="small">Assumes an interest-only mortgage, 12% of rent for letting management, 8% for maintenance and empty months, and £1,500 legal fees. A guide only, not financial advice.</p>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2 class="h2">From deal pack to completion</h2>
+  <p class="sub">You pay nothing until you reserve a deal, and the reservation fee is refundable if the numbers don't stand up at viewing.</p>
+  <div class="steps">
+    <div class="step"><h3>Read the deal pack</h3><p>Sold comparables, two agent rental valuations, the EPC, photos and a refurb schedule priced by a contractor we've used before.</p></div>
+    <div class="step"><h3>Reserve and view</h3><p>A £500 refundable fee takes the deal off the market for 14 days while you view it and line up finance.</p></div>
+    <div class="step"><h3>Complete with our team</h3><p>We introduce solicitors, brokers and builders, and stay on the deal until completion. The rest of our fee is due on that day.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2 class="h2">What investors say</h2>
+  <div class="quotes">
+    <blockquote><p>The deal pack had everything my broker asked for. I offered the same afternoon and completed in nine weeks.</p><div class="who"><span class="avatar" aria-hidden="true">JM</span><span><b>James M.</b>Bought a 3-bed buy-to-let in Swinton</span></div></blockquote>
+    <blockquote><p>I live in Dubai and can't view in person. Their video walkthrough and refurb schedule were spot on.</p><div class="who"><span class="avatar" aria-hidden="true" style="background:var(--band)">RK</span><span><b>Rania K.</b>Bought two serviced accommodation units in Salford</span></div></blockquote>
+  </div>
+  <p class="small">Sample reviews written for this concept.</p>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="wrap faq">
+  <div>
+    <h2 class="h2">Questions investors ask us</h2>
+    <p class="sub">Can't see your question? Ask on the investor list form and we'll reply by email.</p>
+  </div>
+  <div>
+    <details open><summary>How much is your sourcing fee?<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><p>Between £2,500 and £5,000 depending on the deal, shown on every listing. You pay £500 to reserve and the rest on completion.</p></details>
+    <details><summary>Do you buy the properties yourselves?<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><p>No. We find and negotiate the deal, then you buy directly from the vendor. That keeps your stamp duty and legal costs lower.</p></details>
+    <details><summary>Can I invest from outside the UK?<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><p>Yes. About a third of our investors live abroad. We do video viewings and work with brokers who lend to overseas buyers.</p></details>
+    <details><summary>What checks do you do on me?<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><p>As an AML-supervised business we verify your identity and where your funds come from before you reserve a deal.</p></details>
+  </div>
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap"><div class="contact">
+  <div>
+    <h2 class="h2">Get new deals before they're listed</h2>
+    <p class="sub">Tell us your budget and strategy. We only send deals that match, usually two or three a month.</p>
+    <ul>
+      <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>No fee to join the list</li>
+      <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Deals reach the list 48 hours before this page</li>
+      <li><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Unsubscribe in one click</li>
+    </ul>
+  </div>
+  <form id="lead" novalidate>
+    <div class="two">
+      <label for="name">Full name<input id="name" autocomplete="name" required></label>
+      <label for="email">Email<input id="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="two">
+      <label for="budget">Budget<select id="budget"><option>Up to £150,000</option><option selected>£150,000 to £300,000</option><option>£300,000 to £500,000</option><option>Over £500,000</option></select></label>
+      <label for="strategy">Strategy<select id="strategy"><option value="btl">Buy-to-let</option><option value="hmo">HMO</option><option value="sa">Serviced accommodation</option><option value="any">Open to all</option></select></label>
+    </div>
+    <span class="err" id="err" hidden></span>
+    <button class="btn btn-primary" type="submit">Join the investor list</button>
+    <div class="done" id="done" hidden></div>
+  </form>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><a class="logo" href="#top" style="margin-bottom:12px">Redbrick Sourcing</a><p>Property deal sourcing for investors across Greater Manchester and the North West.</p></div>
+    <div><h4>Investors</h4><a href="#deals">Available deals</a><a href="#calculator">Deal calculator</a><a href="#contact">Investor list</a></div>
+    <div><h4>Company</h4><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="legal"><span>Hero photo by Greg Willson on Unsplash. © 2026 Redbrick Sourcing Ltd. Fictional company and compliance details, shown for design purposes.</span><span>Design and build by Sulaiman Bukhsh</span></div>
+</div></footer>
+
+<script>
+/* ---------- terrace street illustration ---------- */
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent&&parent.appendChild(e);return e}
+function rng(seed){return()=>{seed=(seed*16807)%2147483647;return seed/2147483647}}
+const doorColours=["#1f4f45","#24364f","#7a2430","#c79a2b","#3b3b3b","#5a6e3a"];
+function street(svg,{houses=4,seed=7,W=600,H=420,bay=true}){
+  const r=rng(seed), hw=W/houses, top=H*0.28, ground=H-26;
+  el("rect",{x:0,y:ground,width:W,height:H-ground,fill:"var(--pave)"},svg);
+  el("rect",{x:0,y:ground,width:W,height:4,fill:"var(--roof)",opacity:.35},svg);
+  // roof across the row
+  el("polygon",{points:`0,${top} ${W},${top} ${W},${top-H*0.09} 0,${top-H*0.09}`,fill:"var(--roof)"},svg);
+  for(let i=0;i<houses;i++){
+    const x=i*hw, b=["var(--b1)","var(--b2)","var(--b3)"][Math.floor(r()*3)];
+    el("rect",{x,y:top,width:hw,height:ground-top,fill:b},svg);
+    // brick courses
+    for(let y=top+8;y<ground;y+=9) el("line",{x1:x,y1:y,x2:x+hw,y2:y,stroke:"#000",opacity:.07,"stroke-width":1},svg);
+    // party-wall shadow
+    el("rect",{x:x+hw-2,y:top,width:2,height:ground-top,fill:"#000",opacity:.12},svg);
+    // chimney on party wall
+    if(i<houses) el("rect",{x:x+hw-hw*0.09,y:top-H*0.16,width:hw*0.16,height:H*0.08,fill:b},svg),
+                 el("rect",{x:x+hw-hw*0.1,y:top-H*0.165,width:hw*0.18,height:H*0.018,fill:"var(--roof)"},svg);
+    const door=doorColours[Math.floor(r()*doorColours.length)];
+    const left = i%2===0; // doors pair up like real terraces
+    const dW=hw*0.2, dH=(ground-top)*0.36, dX= left? x+hw*0.1 : x+hw-hw*0.1-dW;
+    // door + fanlight + step
+    el("rect",{x:dX-3,y:ground-dH-14,width:dW+6,height:dH+14,fill:"var(--frame)"},svg);
+    el("rect",{x:dX,y:ground-dH,width:dW,height:dH,fill:door},svg);
+    el("rect",{x:dX,y:ground-dH-11,width:dW,height:8,fill:"var(--glass)"},svg);
+    el("rect",{x:dX-6,y:ground-4,width:dW+12,height:4,fill:"var(--frame)",opacity:.8},svg);
+    // ground window (bay)
+    const wW=hw*0.46, wX= left? x+hw*0.42 : x+hw*0.12, wY=ground-(ground-top)*0.42, wH=(ground-top)*0.3;
+    if(bay){el("rect",{x:wX-6,y:wY-10,width:wW+12,height:wH+10+((ground-top)*0.12),fill:b},svg);
+            el("rect",{x:wX-8,y:wY-14,width:wW+16,height:6,fill:"var(--roof)"},svg)}
+    win(svg,wX,wY,wW,wH,3);
+    // upper windows
+    const uW=hw*0.3,uH=(ground-top)*0.22,uY=top+(ground-top)*0.14;
+    win(svg,x+hw*0.12,uY,uW,uH,2); win(svg,x+hw*0.58,uY,uW,uH,2);
+  }
+}
+function win(svg,x,y,w,h,panes){
+  el("rect",{x:x-3,y:y-3,width:w+6,height:h+6,fill:"var(--frame)"},svg);
+  el("rect",{x,y,width:w,height:h,fill:"var(--glass)"},svg);
+  el("rect",{x,y,width:w,height:h*0.35,fill:"#fff",opacity:.12},svg);
+  for(let p=1;p<panes;p++) el("rect",{x:x+w*p/panes-1,y,width:2,height:h,fill:"var(--frame)"},svg);
+  el("rect",{x,y:y+h/2-1,width:w,height:2,fill:"var(--frame)"},svg);
+  el("rect",{x:x-5,y:y+h+3,width:w+10,height:4,fill:"var(--frame)"},svg);
+}
+street(document.getElementById("hero-street"),{houses:3,seed:11});
+document.querySelector(".stars").innerHTML=Array(5).fill('<svg width="18" height="18" viewBox="0 0 20 20"><path fill="currentColor" d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>').join("");
+
+/* ---------- deals ---------- */
+const deals=[
+  {t:"3-bed terrace",w:"Eccles, M30",s:"btl",lab:"Buy-to-let",p:148000,rent:"£1,150",y:9.3,fee:3000,st:"ok",h:3,seed:11},
+  {t:"5-bed licensed HMO",w:"Fallowfield, M14",s:"hmo",lab:"HMO",p:315000,rent:"£3,250",y:12.4,fee:5000,st:"ok",h:2,seed:23},
+  {t:"2-bed apartment",w:"Salford Quays, M50",s:"sa",lab:"Serviced accommodation",p:172500,rent:"£1,480 net",y:10.3,fee:3500,st:"hold",h:4,seed:5},
+  {t:"2-bed terrace",w:"Swinton, M27",s:"btl",lab:"Buy-to-let",p:119000,rent:"£925",y:9.3,fee:2500,st:"ok",h:4,seed:41},
+  {t:"6-bed HMO conversion",w:"Rusholme, M14",s:"hmo",lab:"HMO",p:268000,rent:"£3,420",y:15.3,fee:5000,st:"ok",h:2,seed:67},
+  {t:"3-bed townhouse",w:"Ancoats, M4",s:"sa",lab:"Serviced accommodation",p:289000,rent:"£2,310 net",y:9.6,fee:4000,st:"ok",h:3,seed:89}
+];
+const gbp=n=>"£"+Math.round(n).toLocaleString("en-GB");
+function renderDeals(f){
+  const g=document.getElementById("deal-grid");g.innerHTML="";
+  deals.filter(d=>f==="all"||d.s===f).forEach(d=>{
+    const a=document.createElement("article");a.className="deal";
+    a.innerHTML=`<div class="thumb"><svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg><span class="chip ${d.st}">${d.st==="ok"?"Available":"Reserved"}</span></div>
+    <div class="body"><div><h3>${d.t}</h3><p class="where">${d.lab} in ${d.w}</p></div>
+    <dl><div><dt>Price</dt><dd>${gbp(d.p)}</dd></div><div><dt>Rent pcm</dt><dd>${d.rent}</dd></div><div><dt>Gross yield</dt><dd class="y">${d.y}%</dd></div></dl>
+    <div class="foot"><span class="fee">Sourcing fee ${gbp(d.fee)}</span>${d.st==="ok"?`<button class="btn btn-quiet btn-sm" type="button">Request deal pack</button>`:`<span class="fee">Viewing in progress</span>`}</div></div>`;
+    street(a.querySelector("svg"),{houses:d.h,seed:d.seed,W:480,H:300,bay:d.s!=="sa"});
+    const b=a.querySelector("button"); if(b) b.onclick=()=>{document.getElementById("strategy").value=d.s;document.getElementById("contact").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});setTimeout(()=>document.getElementById("name").focus({preventScroll:true}),400)};
+    g.appendChild(a);
+  });
+}
+document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));renderDeals(b.dataset.f)});
+renderDeals("all");
+
+/* ---------- calculator ---------- */
+const $=id=>document.getElementById(id);
+function sdlt(p){ if(p<40000) return 0;
+  const bands=[[125000,.05],[250000,.07],[925000,.10],[1500000,.15],[Infinity,.17]];
+  let t=0,prev=0; for(const[top,r] of bands){ if(p>prev) t+=(Math.min(p,top)-prev)*r; prev=top } return t }
+function calc(){
+  const price=+$("price").value||0, rent=+$("rent").value||0, refurb=+$("refurb").value||0,
+        dep=+$("deposit").value, rate=(+$("rate").value||0)/100, fee=+$("fee").value||0;
+  const tax=sdlt(price), loan=price*(1-dep), cash=price*dep+tax+refurb+fee+1500;
+  const flow=rent*0.8-loan*rate/12, roi=cash?flow*12/cash*100:0;
+  $("o-yield").textContent=price?(rent*12/price*100).toFixed(1)+"%":"–";
+  $("o-sdlt").textContent=gbp(tax);
+  $("o-cash").textContent=gbp(cash);
+  $("o-flow").textContent=(flow<0?"−":"")+gbp(Math.abs(flow));
+  $("o-roi").textContent=roi.toFixed(1)+"%";
+  const v=$("verdict");
+  if(flow<0){v.textContent="This deal loses money each month at these figures.";v.style.background="var(--hold-bg)";v.style.color="var(--hold)"}
+  else if(roi>=10){v.textContent="Strong return. This would meet our minimum for listing.";v.style.background="var(--good-bg)";v.style.color="var(--good)"}
+  else{v.textContent="Positive, but below the 10% return we look for.";v.style.background="var(--hold-bg)";v.style.color="var(--hold)"}
+}
+["price","rent","refurb","deposit","rate","fee"].forEach(id=>$(id).addEventListener("input",calc));calc();
+
+/* ---------- form ---------- */
+$("lead").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n=$("name").value.trim(), em=$("email");
+  if(!n||!em.value||!em.checkValidity()){$("err").hidden=false;$("err").textContent=!n?"Enter your name.":"Enter an email address like name@example.com.";(!n?$("name"):em).focus();return}
+  $("err").hidden=true;$("done").hidden=false;
+  $("done").textContent=`You're on the list, ${n.split(" ")[0]}. Demo form, so nothing was sent.`;
+});
+</script>
+</body>
+</html>

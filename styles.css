@@ -363,3 +363,35 @@ main, .site-header, .site-footer { position: relative; z-index: 1; }
   .cursor-glow, .progress { display: none; }
   .marquee { transform: none; }
 }
+
+/* ---------- Website design (concept sites) ---------- */
+.section-lede { color: var(--muted); max-width: 60ch; margin-top: var(--s2); font-size: var(--fs-md); line-height: 1.55; }
+.sites { display: grid; gap: var(--s3); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 48rem) { .sites { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 72rem) { .sites { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.site-card {
+  display: flex; flex-direction: column; min-width: 0;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; transition: border-color .25s;
+}
+.site-card:hover { border-color: #4a3f5c; }
+.site-frame { display: block; background: var(--surface-2); border-bottom: 1px solid var(--border); text-decoration: none; }
+.site-bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.site-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+.site-view { display: block; position: relative; aspect-ratio: 16 / 11; overflow: hidden; background: #fff; }
+.site-view iframe {
+  position: absolute; top: 0; left: 0; width: 1440px; height: 990px; border: 0;
+  transform-origin: 0 0; transform: scale(var(--scale, .25)); pointer-events: none;
+  transition: transform .6s var(--ease);
+}
+.site-frame:hover .site-view iframe { transform: scale(var(--scale, .25)) translateY(calc(-1 * var(--peek, 0px))); }
+.site-body { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s3); flex: 1; }
+.site-niche { font: 500 var(--fs-sm) var(--mono); color: var(--accent); }
+.site-card h3 { font-size: var(--fs-md); font-weight: 600; margin-top: -0.5rem; }
+.site-card p { color: var(--muted); }
+.site-card .site-niche { color: var(--accent); }
+.sites-note { margin-top: var(--s3); color: var(--muted); font-size: var(--fs-sm); }
+@media (prefers-reduced-motion: reduce) {
+  .site-view iframe { transition: none; }
+  .site-frame:hover .site-view iframe { transform: scale(var(--scale, .25)); }
+}

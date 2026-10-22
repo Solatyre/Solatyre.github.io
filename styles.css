@@ -424,3 +424,7 @@ main, .site-header, .site-footer { position: relative; z-index: 1; }
 }
 .contact-shader { position: absolute; inset: 0; z-index: -1; border-radius: inherit; }
 .has-shader .contact-card { border-color: transparent; }
+
+/* WebGPU hero (Shaders library) */
+.hero-gpu { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.has-webgpu .hero-canvas { display: none; } /* cursor trail replaces the particle network */

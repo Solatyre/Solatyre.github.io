@@ -48,7 +48,64 @@ function hasWebGL() {
   }
 }
 
-// Hero: a slow, flowing ember-and-violet mesh gradient behind the headline.
+// Hero, WebGPU path: Shaders (https://github.com/shader-effects-inc/shaders, MIT).
+// A drifting mesh gradient, soft grain, and a glowing trail that follows the cursor.
+// Only downloaded when the browser can actually run WebGPU; telemetry is switched off.
+async function webgpuHero() {
+  const el = document.querySelector('.hero-shader');
+  // Add ?webgl to the URL to force the WebGL version (handy for comparing the two).
+  const forceWebGL = new URLSearchParams(location.search).has('webgl');
+  if (!el || reduceMotion || forceWebGL || !('gpu' in navigator)) return false;
+  const lib = await import('./vendor/shaders/shaders.min.js');
+  const support = await lib.getWebGPUSupport();
+  if (!support.supported) return false;
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'hero-gpu';
+  el.appendChild(canvas);
+
+  return new Promise((resolve) => {
+    let settled = false;
+    let instance = null;
+    const finish = (ok) => { if (!settled) { settled = true; resolve(ok); } };
+    // If WebGPU fails at any point (even after it started), swap in the WebGL hero.
+    const fail = () => {
+      try { instance?.destroy(); } catch {}
+      canvas.remove();
+      if (settled) {
+        document.documentElement.classList.remove('has-webgpu');
+        if (!document.querySelector('.hero-shader [data-paper-shader], .hero-shader[data-paper-shader]') && hasWebGL()) attempt('hero', heroShader);
+      }
+      finish(false);
+    };
+    lib.createShader(canvas, {
+      components: [
+        { type: 'MeshGradient', props: {
+          stops: [
+            { color: '#0c0a10', position: 0 },
+            { color: '#3b1670', position: 0.3 },
+            { color: '#9d174d', position: 0.55 },
+            { color: '#ff8a3d', position: 0.8 },
+            { color: '#ffd3a8', position: 1 },
+          ],
+          colorSpace: 'oklab', count: 6, smoothness: 2.4, swirl: 0.35, drift: 0.55, speed: 0.35, seed: 7,
+        } },
+        { type: 'SimplexNoise', props: { scale: 3, speed: 0.4, opacity: 0.1, blendMode: 'softLight' } },
+        ...(window.matchMedia('(hover: hover)').matches
+          ? [{ type: 'CursorTrail', props: { colorA: '#ffb27a', colorB: '#a78bfa', radius: 0.9, length: 0.6, softness: 0.6, opacity: 0.55, blendMode: 'screen' } }]
+          : []),
+      ],
+    }, {
+      disableTelemetry: true,
+      onReady: () => finish(true),
+      onError: fail,
+    }).then((inst) => { instance = inst; if (!canvas.isConnected) inst.destroy(); }).catch(fail);
+    // Slow first compile: give it a few seconds, then fall back rather than show nothing.
+    setTimeout(() => { if (!settled) fail(); }, 8000);
+  });
+}
+
+// Hero, WebGL fallback (Paper Shaders): a slow, flowing ember-and-violet mesh gradient.
 function heroShader() {
   const el = document.querySelector('.hero-shader');
   if (!el) return;
@@ -138,8 +195,21 @@ function attempt(name, fn) {
   try { fn(); return true; } catch (err) { console.warn(`Shader "${name}" disabled:`, err); return false; }
 }
 
+async function startHero() {
+  try {
+    if (await webgpuHero()) {
+      document.documentElement.classList.add('has-shader', 'has-webgpu');
+      return;
+    }
+  } catch (err) {
+    console.warn('WebGPU hero unavailable, using WebGL:', err);
+  }
+  if (hasWebGL() && attempt('hero', heroShader)) document.documentElement.classList.add('has-shader');
+}
+
+startHero();
+
 if (hasWebGL()) {
-  if (attempt('hero', heroShader)) document.documentElement.classList.add('has-shader');
   loadNoise()
     .then((noise) => {
       attempt('cards', () => cardShaders(noise));

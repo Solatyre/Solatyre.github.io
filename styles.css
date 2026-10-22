@@ -395,3 +395,32 @@ main, .site-header, .site-footer { position: relative; z-index: 1; }
   .site-view iframe { transition: none; }
   .site-frame:hover .site-view iframe { transform: scale(var(--scale, .25)); }
 }
+
+/* =========================================================
+   SHADER LAYER (Paper Shaders, WebGL) — progressive enhancement
+   ========================================================= */
+.hero-shader { position: absolute; inset: 0; z-index: -3; }
+.hero-scrim {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(12 10 16 / .86) 0%, rgb(12 10 16 / .55) 45%, rgb(12 10 16 / 0) 100%),
+    linear-gradient(180deg, transparent 60%, rgb(12 10 16 / .9) 100%);
+}
+@media (max-width: 720px) {
+  .hero-scrim { background: linear-gradient(180deg, rgb(12 10 16 / .55) 0%, rgb(12 10 16 / .8) 55%, rgb(12 10 16 / .95) 100%); }
+}
+.has-shader .hero-aurora { display: none; }
+.has-shader .hero-canvas { opacity: .55; mix-blend-mode: screen; }
+
+/* project cards: shader replaces the CSS glow */
+.project-visual.shader-on::before { display: none; }
+.project-visual span { z-index: 1; }
+
+/* contact card with animated glowing border */
+.contact-card {
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: 28px; padding: clamp(2rem, 6vw, 4.5rem);
+  background: var(--surface); border: 1px solid var(--border);
+}
+.contact-shader { position: absolute; inset: 0; z-index: -1; border-radius: inherit; }
+.has-shader .contact-card { border-color: transparent; }

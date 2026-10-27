@@ -1,4 +1,4 @@
-// Small progressive enhancements: mobile menu, header state, scroll reveals, iframe scaling, active nav link.
+// Small progressive enhancements: mobile menu, header state, scroll reveals, active nav link.
 (() => {
   const header = document.querySelector('.site-header');
   const menuBtn = document.querySelector('.menu-btn');
@@ -33,16 +33,6 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach((el) => io.observe(el));
   }
-
-  // Scale the live concept-site previews to fit their frames
-  const frames = document.querySelectorAll('.frame-view');
-  const fit = () => frames.forEach((view) => {
-    const iframe = view.querySelector('iframe');
-    if (iframe) iframe.style.transform = `scale(${view.clientWidth / 1280})`;
-  });
-  fit();
-  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(document.body);
-  else window.addEventListener('resize', fit);
 
   // Highlight the nav link for the section in view
   const links = document.querySelectorAll('.nav a');

@@ -20,8 +20,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="grain" aria-hidden="true"></div>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
@@ -65,8 +63,6 @@
 
   <main id="main">
     <div class="shell">
-      <div class="shell-glow a" aria-hidden="true"></div>
-      <div class="shell-glow b" aria-hidden="true"></div>
 
       <!-- HERO -->
       <section class="hero" id="top" aria-labelledby="hero-title">
@@ -124,7 +120,7 @@
 
         <div class="projects-2">
           <article class="feature glass card reveal" aria-labelledby="eduoasis-title">
-            <div class="shot"><img src="img/eduoasis.webp" width="1200" height="900" loading="lazy" alt="EduOasis: a top-down island hub where one study island has dried to brown because it hasn't been reviewed, while the others are still green."></div>
+            <div class="shot"><img src="img/eduoasis.webp" width="1200" height="900" loading="lazy" decoding="async" alt="EduOasis: a top-down island hub where one study island has dried to brown because it hasn't been reviewed, while the others are still green."></div>
             <h3 id="eduoasis-title">EduOasis</h3>
             <p class="desc">Upload your notes and they become a game world on your own island. Like memories, islands dry up as a forgetting-curve model predicts you're forgetting, so you come back and play to keep them alive. Gemini builds the worlds, Pip the AI companion answers from your notes, and a World Market runs on MOE, a real Token-2022 token on Solana devnet.</p>
             <ul class="chips" aria-label="Tech used"><li class="chip">Next.js</li><li class="chip">React</li><li class="chip">Phaser</li><li class="chip">Gemini</li><li class="chip">Solana</li></ul>
@@ -136,7 +132,7 @@
           </article>
 
           <article class="feature glass card reveal" aria-labelledby="demoforge-title">
-            <div class="shot"><img src="img/demoforge.webp" width="1200" height="900" loading="lazy" alt="DemoForge home page: 'Turn any GitHub repo into a cinematic product demo', with a box to paste a repository URL."></div>
+            <div class="shot"><img src="img/demoforge.webp" width="1200" height="900" loading="lazy" decoding="async" alt="DemoForge home page: 'Turn any GitHub repo into a cinematic product demo', with a box to paste a repository URL."></div>
             <h3 id="demoforge-title">DemoForge</h3>
             <p class="desc">Paste a GitHub repo and get a narrated promo video. Gemini writes the storyboard, Playwright films the real app, Higgsfield adds cinematic scenes, ElevenLabs narrates and FFmpeg puts it together. AI agents can drive it too, through its MCP server.</p>
             <ul class="chips" aria-label="Tech used"><li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip">Playwright</li><li class="chip">Higgsfield</li><li class="chip">ElevenLabs</li></ul>
@@ -158,21 +154,21 @@
         </div>
         <div class="sites">
           <a class="site glass card card-hover reveal" href="work/redbrick/">
-            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/redbrick/" title="Preview of Redbrick Sourcing" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="frame"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><img src="img/redbrick.webp" width="960" height="600" loading="lazy" decoding="async" alt="Redbrick Sourcing home page: below-market property deals in Manchester"></span></span>
             <span class="kicker">Property investment</span>
             <h3>Redbrick Sourcing</h3>
             <p>A deal-sourcing firm selling below-market property to investors: filterable deal board, ROI and stamp duty calculator, lead capture.</p>
             <span class="more-link">View the site <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
           <a class="site glass card card-hover reveal" href="work/ancoats-physio/">
-            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/ancoats-physio/" title="Preview of Ancoats Movement Clinic" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="frame"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><img src="img/ancoats-physio.webp" width="960" height="600" loading="lazy" decoding="async" alt="Ancoats Movement Clinic home page: physiotherapy booking"></span></span>
             <span class="kicker">Healthcare clinic</span>
             <h3>Ancoats Movement Clinic</h3>
             <p>A physiotherapy practice built for bookings: choose a treatment, day and time in three steps, with prices up front and accessible forms.</p>
             <span class="more-link">View the site <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
           <a class="site glass card card-hover reveal" href="work/tallyfold/">
-            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/tallyfold/" title="Preview of Tallyfold" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="frame"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><img src="img/tallyfold.webp" width="960" height="600" loading="lazy" decoding="async" alt="Tallyfold home page: invoicing app with a dashboard hero"></span></span>
             <span class="kicker">SaaS startup</span>
             <h3>Tallyfold</h3>
             <p>A landing page for an invoicing app where the product does the selling: a live invoice editor with VAT and currency, and a pricing toggle.</p>

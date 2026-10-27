@@ -48,26 +48,28 @@ ul { margin: 0; padding: 0; list-style: none; }
 .icon { width: 1.25rem; height: 1.25rem; flex: none; }
 .icon-sm { width: 1rem; height: 1rem; }
 
-/* Background glows + grain */
-.bg-blobs { position: fixed; inset: 0; z-index: -1; background: linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%); overflow: hidden; pointer-events: none; }
-.bg-blobs span { position: absolute; border-radius: 50%; filter: blur(140px); animation: drift 26s var(--ease) infinite alternate; }
-.bg-blobs span:nth-child(1) { width: 46rem; height: 46rem; left: -14rem; top: -10rem; background: rgba(59, 130, 246, .28); }
-.bg-blobs span:nth-child(2) { width: 40rem; height: 40rem; right: -12rem; top: 30%; background: rgba(139, 92, 246, .22); animation-delay: -9s; }
-.bg-blobs span:nth-child(3) { width: 36rem; height: 36rem; left: 22%; bottom: -14rem; background: rgba(20, 184, 166, .16); animation-delay: -17s; }
-@keyframes drift { to { transform: translate3d(4rem, 3rem, 0) scale(1.08); } }
-.grain { position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+/* Background: soft glows painted as gradients (no blur filters, no animation = cheap to scroll) */
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(40rem 40rem at 8% 6%, rgba(59, 130, 246, .26), transparent 70%),
+    radial-gradient(36rem 36rem at 96% 42%, rgba(139, 92, 246, .22), transparent 70%),
+    radial-gradient(34rem 34rem at 38% 104%, rgba(20, 184, 166, .15), transparent 70%),
+    linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%); }
 
 /* Frosted glass */
 .glass {
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  backdrop-filter: blur(24px) saturate(160%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .09));
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
-.card { border-radius: var(--r-lg); transition: transform .35s var(--ease), border-color .35s var(--ease), background-color .35s var(--ease); }
-.card-hover:hover { transform: translateY(-4px); border-color: var(--line-strong); background-color: var(--glass-strong); }
+/* Real backdrop blur only on elements that float over scrolling content */
+.site-header .glass, .mobile-menu {
+  background: rgba(22, 30, 56, .55);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+}
+.card { border-radius: var(--r-lg); transition: transform .35s var(--ease), border-color .35s var(--ease); }
+.card-hover:hover { transform: translateY(-4px); border-color: var(--line-strong); }
 
 /* Labels, chips, buttons */
 .kicker { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
@@ -80,7 +82,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .95rem 1.75rem; border-radius: 999px; font-weight: 600; font-size: 1rem; line-height: 1; white-space: nowrap; transition: transform .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease); }
 .btn-primary { background: var(--grad); color: #fff; box-shadow: 0 10px 30px rgba(96, 165, 250, .25); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(96, 165, 250, .38); }
-.btn-ghost { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); border: 1px solid var(--line); }
+.btn-ghost { background: var(--glass); border: 1px solid var(--line); }
 .btn-ghost:hover { background: rgba(255, 255, 255, .18); border-color: var(--line-strong); }
 .btn-sm { padding: .7rem 1.25rem; font-size: .875rem; }
 .btn-lg { padding: 1.2rem 2.25rem; font-size: 1.125rem; }
@@ -112,11 +114,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Shell */
 main { padding: 6.5rem 1rem 3rem; }
 .shell { position: relative; max-width: var(--max); margin: 0 auto; padding: 2rem 1.25rem; border-radius: 2rem; overflow: hidden;
-  background: rgba(255, 255, 255, .05);
+  background: radial-gradient(42rem 36rem at 0% 0%, rgba(96, 165, 250, .22), transparent 70%), radial-gradient(36rem 32rem at 100% 78%, rgba(167, 139, 250, .16), transparent 70%), rgba(255, 255, 255, .05);
   border: 1px solid rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 30px 80px rgba(0, 0, 0, .45); }
-.shell-glow { position: absolute; border-radius: 50%; filter: blur(140px); opacity: .35; pointer-events: none; }
-.shell-glow.a { width: 37rem; height: 37rem; left: -12rem; top: -6rem; background: var(--accent); }
-.shell-glow.b { width: 31rem; height: 31rem; right: -6rem; bottom: 20%; background: var(--violet); }
 .shell > section { position: relative; }
 @media (min-width: 40rem) { main { padding-inline: 2rem; } .shell { padding: 3rem; border-radius: 2.5rem; } }
 @media (min-width: 64rem) { .shell { padding: 4rem; } }
@@ -184,7 +183,8 @@ main { padding: 6.5rem 1rem 3rem; }
 .frame-bar { display: flex; gap: .35rem; padding: .55rem .75rem; background: rgba(255, 255, 255, .06); border-bottom: 1px solid rgba(255, 255, 255, .08); }
 .frame-bar i { width: .55rem; height: .55rem; border-radius: 50%; background: rgba(255, 255, 255, .25); }
 .frame-view { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
-.frame-view iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0; transform-origin: 0 0; pointer-events: none; }
+.frame-view img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .7s var(--ease); }
+.site:hover .frame-view img { transform: scale(1.03); }
 .site .kicker { display: block; margin-bottom: .5rem; }
 .site h3 { font-size: 1.25rem; margin-bottom: .5rem; }
 .site p { font-size: .9375rem; color: var(--muted); margin-bottom: 1.5rem; }
@@ -242,5 +242,5 @@ main { padding: 6.5rem 1rem 3rem; }
   .reveal { opacity: 1; transform: none; }
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass, .btn-ghost { background-color: rgba(30, 38, 64, .92); }
+  .site-header .glass, .mobile-menu { background: rgba(22, 30, 56, .95); }
 }

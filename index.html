@@ -4,306 +4,291 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sulaiman Bukhsh, web designer and full-stack developer</title>
-  <meta name="description" content="Sulaiman Bukhsh is a Manchester-based web designer and full-stack developer building websites for businesses and web apps. Available for freelance work worldwide.">
-  <meta name="theme-color" content="#0c0a10">
+  <meta name="description" content="Sulaiman Bukhsh is a Manchester-based web designer and full-stack developer building websites for businesses and web apps. Hackathon builder (OxHack 2026). Available for freelance work worldwide.">
+  <meta name="theme-color" content="#0b1220">
   <meta property="og:title" content="Sulaiman Bukhsh, web designer and full-stack developer">
-  <meta property="og:description" content="Websites for businesses and web apps with React, TypeScript and Node.js. Available for freelance work worldwide.">
+  <meta property="og:description" content="Websites for businesses, web apps and hackathon projects with React, TypeScript, Next.js and Node.js. Available for freelance work worldwide.">
   <meta property="og:type" content="website">
-  <!-- PLACEHOLDER: set to your domain once it's live -->
   <meta property="og:url" content="https://sbukhsh.co.uk/">
+  <meta property="og:image" content="https://sbukhsh.co.uk/img/eduoasis.webp">
   <link rel="canonical" href="https://sbukhsh.co.uk/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="progress" aria-hidden="true"></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <!-- SVG icon sprite -->
-  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></symbol>
-    <symbol id="i-file" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H6v18h12V7zM14 3v4h4M9 13h6M9 17h6"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H6v18h12V7zM14 3v4h4M12 11v6M9 14l3 3 3-3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
     <symbol id="i-server" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 4h18v6H3zM3 14h18v6H3zM7 7h.01M7 17h.01"/></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></g></symbol>
     <symbol id="i-tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
   </svg>
 
   <header class="site-header">
-    <nav class="nav container" aria-label="Main">
-      <a class="brand" href="#top" aria-label="Sulaiman Bukhsh, back to top">
-        <span class="brand-mark" aria-hidden="true">SB</span>
-        <span class="brand-name">Sulaiman Bukhsh</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#websites">Websites</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a class="btn btn-small" href="#contact">Contact</a></li>
-      </ul>
+    <a class="logo glass" href="#top" aria-label="Sulaiman Bukhsh, back to top">SB</a>
+    <nav class="nav glass" aria-label="Main">
+      <a href="#hackathons">Hackathons</a>
+      <a href="#work">Work</a>
+      <a href="#apps">Apps</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <div class="header-right">
+      <p class="status glass mono"><span class="dot" aria-hidden="true"></span>Available for freelance work</p>
+      <a class="btn btn-primary btn-sm" href="#contact">Get in touch</a>
+    </div>
+    <button class="menu-btn glass" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
   </header>
+  <nav class="mobile-menu glass" id="mobile-menu" aria-label="Mobile" hidden>
+    <a href="#hackathons">Hackathons</a>
+    <a href="#work">Work</a>
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero-wrap" id="top" aria-labelledby="hero-title">
-      <div class="hero-shader" aria-hidden="true"></div>
-      <canvas class="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-scrim" aria-hidden="true"></div>
-      <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="hero container">
-      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Available for freelance work</p>
-      <h1 id="hero-title" aria-label="Sulaiman Bukhsh"><span class="scramble" aria-hidden="true" data-text="Sulaiman Bukhsh">Sulaiman Bukhsh</span></h1>
-      <!-- PLACEHOLDER: confirm degree subject -->
-      <p class="headline">
-        <span class="sr-only">Full-stack developer building business websites, encrypted tools and data dashboards.</span>
-        <span aria-hidden="true">Full-stack developer building <span class="rotator" data-words="business websites|encrypted tools|data dashboards|fast web apps">business websites</span><span class="caret"></span></span>
-      </p>
-      <p class="lede">Final-year Computer Science student based in Manchester, UK. I design and build websites for businesses and web apps with React, TypeScript and Node.js, and I work with clients anywhere in the world.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#websites">View my work</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
-        <a class="btn btn-ghost" href="Sulaiman-Bukhsh-CV.pdf" download><svg class="icon icon-sm" aria-hidden="true"><use href="#i-file"/></svg>Download CV<span class="sr-only"> (PDF, 1 page)</span></a>
-      </div>
-      <ul class="social" aria-label="Profiles">
-        <li><a href="https://github.com/Solatyre" rel="me noopener" target="_blank" aria-label="GitHub profile (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
-        <li><a href="https://www.linkedin.com/in/sulaiman-bukhsh/" rel="me noopener" target="_blank" aria-label="LinkedIn profile (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
-        <li><a href="mailto:sulaimanbukhsh@gmail.com" aria-label="Email Sulaiman"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
-      </ul>
-      <a class="scroll-cue" href="#websites" aria-label="Scroll to my work"><span></span></a>
-      </div>
-    </section>
+    <div class="shell">
+      <div class="shell-glow a" aria-hidden="true"></div>
+      <div class="shell-glow b" aria-hidden="true"></div>
 
-    <!-- MARQUEE (decorative) -->
-    <div class="marquee-wrap" aria-hidden="true"><div class="marquee">
-      <div class="marquee-track">
-        <span>React</span><span>TypeScript</span><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>Supabase</span><span>Tailwind</span><span>Express</span>
-        <span>React</span><span>TypeScript</span><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Prisma</span><span>Supabase</span><span>Tailwind</span><span>Express</span>
-      </div>
-    </div></div>
+      <!-- HERO -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">Sulaiman<br><span class="grad-text">Bukhsh</span></h1>
+          <p class="hero-lede">Web designer &amp; full-stack developer, Manchester.</p>
+          <p class="hero-sub">Final-year Computer Science student building websites for businesses and web apps with React, TypeScript and Node.js, for clients anywhere in the world.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#hackathons">View work <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            <a class="btn btn-ghost" href="Sulaiman-Bukhsh-CV.pdf" download><svg class="icon icon-sm" aria-hidden="true"><use href="#i-file"/></svg>Download CV<span class="sr-only"> (PDF)</span></a>
+          </div>
+          <ul class="social" aria-label="Profiles">
+            <li><a class="glass" href="https://github.com/Solatyre" rel="me noopener" target="_blank" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+            <li><a class="glass" href="https://www.linkedin.com/in/sulaiman-bukhsh/" rel="me noopener" target="_blank" aria-label="LinkedIn (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a class="glass" href="mailto:sulaimanbukhsh@gmail.com" aria-label="Email Sulaiman"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+          </ul>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="float-card glass one"><span class="mono">Status</span><strong>Final-year CS · 2027</strong></div>
+          <div class="float-card glass two"><span class="mono">Location</span><strong>Freelance worldwide</strong></div>
+          <div class="float-card glass three"><span class="mono">Core stack</span>
+            <div class="chips" style="margin-top:.5rem"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Node.js</span></div>
+          </div>
+        </div>
+      </section>
 
-    <!-- WEBSITES -->
-    <section class="section container" id="websites" aria-labelledby="websites-title">
-      <div class="section-head">
-        <p class="kicker">01 / Website design</p>
-        <h2 id="websites-title">Websites for businesses</h2>
-        <p class="section-lede">Three concept sites for fictional businesses in different industries. Each one is designed around what that kind of customer needs to do, and each has a working feature, not just a pretty page.</p>
-      </div>
+      <!-- HACKATHONS -->
+      <section class="section" id="hackathons" aria-labelledby="hackathons-title">
+        <div class="section-head reveal">
+          <p class="kicker">01 / Hackathons</p>
+          <h2 id="hackathons-title">Hackathons</h2>
+          <p class="section-lede">Building real products against the clock, as part of a team.</p>
+        </div>
 
-      <div class="sites">
-        <article class="site-card">
-          <a class="site-frame" href="work/redbrick/" aria-label="Open the Redbrick Sourcing concept site">
-            <span class="site-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="site-view"><iframe src="work/redbrick/" title="Preview of the Redbrick Sourcing concept site" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></span>
-          </a>
-          <div class="site-body">
-            <p class="site-niche">Property investment</p>
+        <article class="event glass reveal" aria-labelledby="oxhack-title">
+          <div class="event-top">
+            <div>
+              <p class="kicker">OxHack 2026 · Oxford</p>
+              <h3 id="oxhack-title">48 hours. Two products. Shipped.</h3>
+              <p class="event-meta">Oxford's student hackathon · 24–25 Oct 2026 · Team of 4</p>
+            </div>
+            <ul class="chips" aria-label="Tracks entered">
+              <li class="chip chip-accent">Main theme: Time</li><li class="chip">Solana</li><li class="chip">Gemini</li>
+            </ul>
+          </div>
+          <p class="event-text">Over one weekend our team built and submitted two working products: a learning game for neurodivergent students with its own crypto token, and a tool that turns any GitHub repo into a promo video. Both are live.</p>
+          <ol class="timeline mono" aria-label="Weekend timeline">
+            <li><time>Sat 24 Oct</time><span>Hacking starts</span></li>
+            <li><time>Sat evening</time><span>Islands, AI worlds and market merged</span></li>
+            <li><time>Sat 23:29</time><span>Real MOE transfers live on Solana devnet</span></li>
+            <li><time>Sun 12:00</time><span>Both projects submitted</span></li>
+          </ol>
+        </article>
+
+        <div class="projects-2">
+          <article class="feature glass card reveal" aria-labelledby="eduoasis-title">
+            <div class="shot"><img src="img/eduoasis.webp" width="1200" height="900" loading="lazy" alt="EduOasis: a top-down island hub where one study island has dried to brown because it hasn't been reviewed, while the others are still green."></div>
+            <h3 id="eduoasis-title">EduOasis</h3>
+            <p class="desc">Upload your notes and they become a game world on your own island. Like memories, islands dry up as a forgetting-curve model predicts you're forgetting, so you come back and play to keep them alive. Gemini builds the worlds, Pip the AI companion answers from your notes, and a World Market runs on MOE, a real Token-2022 token on Solana devnet.</p>
+            <ul class="chips" aria-label="Tech used"><li class="chip">Next.js</li><li class="chip">React</li><li class="chip">Phaser</li><li class="chip">Gemini</li><li class="chip">Solana</li></ul>
+            <p class="my-part"><b>My part:</b> worked across the whole stack: front end, back end and integrations.</p>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="https://edu-oasis-mark2.vercel.app" target="_blank" rel="noopener">Live site<span class="sr-only"> for EduOasis (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-out"/></svg></a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/cklaw25/edu-oasis-mark2" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for EduOasis (opens in a new tab)</span></a>
+            </div>
+          </article>
+
+          <article class="feature glass card reveal" aria-labelledby="demoforge-title">
+            <div class="shot"><img src="img/demoforge.webp" width="1200" height="900" loading="lazy" alt="DemoForge home page: 'Turn any GitHub repo into a cinematic product demo', with a box to paste a repository URL."></div>
+            <h3 id="demoforge-title">DemoForge</h3>
+            <p class="desc">Paste a GitHub repo and get a narrated promo video. Gemini writes the storyboard, Playwright films the real app, Higgsfield adds cinematic scenes, ElevenLabs narrates and FFmpeg puts it together. AI agents can drive it too, through its MCP server.</p>
+            <ul class="chips" aria-label="Tech used"><li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip">Playwright</li><li class="chip">Higgsfield</li><li class="chip">ElevenLabs</li></ul>
+            <p class="my-part"><b>My part:</b> worked across the whole stack: front end, back end and integrations.</p>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="https://demo-forge-nu.vercel.app" target="_blank" rel="noopener">Live site<span class="sr-only"> for DemoForge (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-out"/></svg></a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Shiro8223/DemoForge" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for DemoForge (opens in a new tab)</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- WEBSITES -->
+      <section class="section" id="work" aria-labelledby="work-title">
+        <div class="section-head reveal">
+          <p class="kicker">02 / Website design</p>
+          <h2 id="work-title">Websites for businesses</h2>
+          <p class="section-lede">Three concept sites for fictional businesses in different industries, each designed around what that customer needs to do, and each with a working feature.</p>
+        </div>
+        <div class="sites">
+          <a class="site glass card card-hover reveal" href="work/redbrick/">
+            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/redbrick/" title="Preview of Redbrick Sourcing" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="kicker">Property investment</span>
             <h3>Redbrick Sourcing</h3>
-            <p>A deal-sourcing firm selling below-market property to investors. Built to earn trust fast: compliance details up front, a deal board you can filter by strategy, and a calculator that works out stamp duty, cash needed and return on investment.</p>
-            <ul class="tags" aria-label="What it includes">
-              <li>Filterable listings</li><li>ROI calculator</li><li>Lead capture</li>
-            </ul>
-            <div class="project-links">
-              <a href="work/redbrick/">View the site<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="site-card">
-          <a class="site-frame" href="work/ancoats-physio/" aria-label="Open the Ancoats Movement Clinic concept site">
-            <span class="site-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="site-view"><iframe src="work/ancoats-physio/" title="Preview of the Ancoats Movement Clinic concept site" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></span>
+            <p>A deal-sourcing firm selling below-market property to investors: filterable deal board, ROI and stamp duty calculator, lead capture.</p>
+            <span class="more-link">View the site <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
-          <div class="site-body">
-            <p class="site-niche">Healthcare clinic</p>
+          <a class="site glass card card-hover reveal" href="work/ancoats-physio/">
+            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/ancoats-physio/" title="Preview of Ancoats Movement Clinic" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="kicker">Healthcare clinic</span>
             <h3>Ancoats Movement Clinic</h3>
-            <p>A physiotherapy practice where the goal is booked appointments. Patients choose a treatment, a day and a time in three steps, see prices before they commit, and get a feel for the care through an interactive recovery plan.</p>
-            <ul class="tags" aria-label="What it includes">
-              <li>Booking flow</li><li>Price list</li><li>Accessible forms</li>
-            </ul>
-            <div class="project-links">
-              <a href="work/ancoats-physio/">View the site<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="site-card">
-          <a class="site-frame" href="work/tallyfold/" aria-label="Open the Tallyfold concept site">
-            <span class="site-bar" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="site-view"><iframe src="work/tallyfold/" title="Preview of the Tallyfold concept site" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></span>
+            <p>A physiotherapy practice built for bookings: choose a treatment, day and time in three steps, with prices up front and accessible forms.</p>
+            <span class="more-link">View the site <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
-          <div class="site-body">
-            <p class="site-niche">SaaS startup</p>
+          <a class="site glass card card-hover reveal" href="work/tallyfold/">
+            <span class="frame" aria-hidden="true"><span class="frame-bar"><i></i><i></i><i></i></span><span class="frame-view"><iframe src="work/tallyfold/" title="Preview of Tallyfold" loading="lazy" tabindex="-1"></iframe></span></span>
+            <span class="kicker">SaaS startup</span>
             <h3>Tallyfold</h3>
-            <p>A landing page for an invoicing app. The product does the selling: a dashboard hero, a timeline of the reminder emails it sends, and a working invoice you can edit, with VAT and currency handled live.</p>
-            <ul class="tags" aria-label="What it includes">
-              <li>Product UI hero</li><li>Live invoice editor</li><li>Pricing toggle</li>
-            </ul>
-            <div class="project-links">
-              <a href="work/tallyfold/">View the site<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </div>
-        </article>
-      </div>
-      <p class="sites-note">Every site works on phones, supports dark mode and is built to accessibility standards. The businesses are fictional; the code is real.</p>
-    </section>
+            <p>A landing page for an invoicing app where the product does the selling: a live invoice editor with VAT and currency, and a pricing toggle.</p>
+            <span class="more-link">View the site <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </a>
+        </div>
+        <p class="note">Every site works on phones, supports dark mode and is built to accessibility standards. The businesses are fictional; the code is real.</p>
+      </section>
 
-    <!-- PROJECTS -->
-    <section class="section container" id="projects" aria-labelledby="projects-title">
-      <div class="section-head">
-        <p class="kicker">02 / Apps</p>
-        <h2 id="projects-title">Web apps and tools</h2>
-      </div>
-
-      <div class="projects">
-        <article class="project">
-          <div class="project-visual v1" aria-hidden="true"><span>AES · one-time link</span></div>
-          <div class="project-body">
+      <!-- APPS -->
+      <section class="section" id="apps" aria-labelledby="apps-title">
+        <div class="section-head reveal">
+          <p class="kicker">03 / Apps</p>
+          <h2 id="apps-title">Web apps and tools</h2>
+        </div>
+        <div class="apps">
+          <article class="app glass card card-hover reveal">
             <h3>Zero-Knowledge Secret Sharer</h3>
-            <p>Share a password or secret through a one-time link. Text is encrypted in the browser before it is sent, the key never leaves the link, and the secret is deleted as soon as it is read, so the server only ever sees ciphertext.</p>
-            <ul class="tags" aria-label="Tech used">
-              <li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Tailwind CSS</li><li>crypto-js</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://zero-knowledge-portfolio.vercel.app" target="_blank" rel="noopener">Live demo<span class="sr-only"> of Zero-Knowledge Secret Sharer (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a href="https://github.com/Solatyre/zero-knowledge-secret-sharer" target="_blank" rel="noopener">Source code<span class="sr-only"> for Zero-Knowledge Secret Sharer (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <p>Share a password or secret through a one-time link. Text is encrypted in the browser before it's sent, the key never leaves the link, and the secret is deleted as soon as it's read.</p>
+            <ul class="chips" aria-label="Tech used"><li class="chip">Next.js</li><li class="chip">TypeScript</li><li class="chip">Supabase</li><li class="chip">crypto-js</li></ul>
+            <div class="actions">
+              <a class="btn btn-ghost btn-sm" href="https://zero-knowledge-portfolio.vercel.app" target="_blank" rel="noopener">Live demo<span class="sr-only"> of Zero-Knowledge Secret Sharer (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-out"/></svg></a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Solatyre/zero-knowledge-secret-sharer" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for Zero-Knowledge Secret Sharer (opens in a new tab)</span></a>
             </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-visual v2" aria-hidden="true"><span>complexity · trends</span></div>
-          <div class="project-body">
+          </article>
+          <article class="app glass card card-hover reveal">
             <h3>Code Tuner Viz</h3>
-            <p>A full-stack dashboard for software complexity metrics: overall project health, complexity distribution, class sizes, trends over time and side-by-side repository benchmarks.</p>
-            <ul class="tags" aria-label="Tech used">
-              <li>React</li><li>TypeScript</li><li>Express</li><li>PostgreSQL</li><li>Prisma</li><li>Recharts</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/Solatyre/code-tuner-vis" target="_blank" rel="noopener">Source code<span class="sr-only"> for Code Tuner Viz (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <p>A full-stack dashboard for software complexity metrics: project health, complexity distribution, class sizes, trends over time and side-by-side repository benchmarks.</p>
+            <ul class="chips" aria-label="Tech used"><li class="chip">React</li><li class="chip">TypeScript</li><li class="chip">Express</li><li class="chip">PostgreSQL</li><li class="chip">Prisma</li></ul>
+            <div class="actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Solatyre/code-tuner-vis" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for Code Tuner Viz (opens in a new tab)</span></a>
             </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-visual v3" aria-hidden="true"><span>p ∧ q → r</span></div>
-          <div class="project-body">
+          </article>
+          <article class="app glass card card-hover reveal">
             <h3>Logic Loop</h3>
             <p>An interactive learning app for logic and the maths behind AI, with four difficulty levels, quizzes and hands-on labs: truth tables, k-nearest neighbours, matrices, Bayes and entropy.</p>
-            <ul class="tags" aria-label="Tech used">
-              <li>React</li><li>TypeScript</li><li>Vite</li><li>Tailwind CSS</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/Solatyre/logic-loop" target="_blank" rel="noopener">Source code<span class="sr-only"> for Logic Loop (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <ul class="chips" aria-label="Tech used"><li class="chip">React</li><li class="chip">TypeScript</li><li class="chip">Vite</li><li class="chip">Tailwind CSS</li></ul>
+            <div class="actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Solatyre/logic-loop" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for Logic Loop (opens in a new tab)</span></a>
             </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-visual v4" aria-hidden="true"><span>hotspots · LOC</span></div>
-          <div class="project-body">
+          </article>
+          <article class="app glass card card-hover reveal">
             <h3>Software Complexity Dashboard</h3>
-            <p>A group project: a data dashboard for finding risky code: complexity density, change over time, class scatter plots, lines-of-code ranges and hotspot detection, served from a PostgreSQL-backed API.</p>
-            <ul class="tags" aria-label="Tech used">
-              <li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Node.js</li><li>PostgreSQL</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/Solatyre/software-complexity-dashboard" target="_blank" rel="noopener">Source code<span class="sr-only"> for Software Complexity Dashboard (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <p>A group project: a data dashboard for finding risky code, with complexity density, change over time, class scatter plots and hotspot detection from a PostgreSQL-backed API.</p>
+            <ul class="chips" aria-label="Tech used"><li class="chip">React</li><li class="chip">Vite</li><li class="chip">Node.js</li><li class="chip">PostgreSQL</li></ul>
+            <div class="actions">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Solatyre/software-complexity-dashboard" target="_blank" rel="noopener"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-github"/></svg>Source<span class="sr-only"> code for Software Complexity Dashboard (opens in a new tab)</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="github-more"><a href="https://github.com/Solatyre" target="_blank" rel="noopener">See everything on GitHub<span class="sr-only"> (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-out"/></svg></a></p>
+      </section>
+
+      <!-- ABOUT + SKILLS -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="about">
+          <div class="reveal">
+            <p class="kicker">04 / About &amp; skills</p>
+            <h2 id="about-title">Turning messy problems into clear software.</h2>
+            <div class="about-text">
+              <p>I'm a final-year Computer Science student in Manchester, UK, and a full-stack developer who enjoys turning messy problems into clear, usable software. My work ranges from privacy tools that encrypt data in the browser to dashboards that make code quality visible at a glance, and products built in a weekend at hackathons.</p>
+              <p>Before tech I worked as a property sourcer, which taught me to understand what a client actually needs, communicate clearly and deliver on deadlines. I bring the same approach to freelance work: clear scope, regular updates and clean code you can maintain.</p>
+            </div>
+            <dl class="facts">
+              <div class="glass"><dt>Based in</dt><dd>Manchester, UK</dd></div>
+              <div class="glass"><dt>Works with</dt><dd>Clients worldwide</dd></div>
+              <div class="glass"><dt>Focus</dt><dd>Websites, web apps, APIs</dd></div>
+              <div class="glass"><dt>Status</dt><dd>Open to freelance &amp; graduate roles</dd></div>
+            </dl>
+          </div>
+          <div class="skills">
+            <div class="skill-group glass card reveal">
+              <h3><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Frontend</h3>
+              <ul><li class="skill">React</li><li class="skill">Next.js</li><li class="skill">TypeScript</li><li class="skill">JavaScript</li><li class="skill">Tailwind CSS</li><li class="skill">HTML &amp; CSS</li></ul>
+            </div>
+            <div class="skill-group glass card reveal">
+              <h3><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg>Backend</h3>
+              <ul><li class="skill">Node.js</li><li class="skill">Express</li><li class="skill">REST APIs</li><li class="skill">Supabase</li></ul>
+            </div>
+            <div class="skill-group glass card reveal">
+              <h3><svg class="icon" aria-hidden="true"><use href="#i-db"/></svg>Data</h3>
+              <ul><li class="skill">PostgreSQL</li><li class="skill">Prisma</li><li class="skill">Recharts</li><li class="skill">Chart.js</li></ul>
+            </div>
+            <div class="skill-group glass card reveal">
+              <h3><svg class="icon" aria-hidden="true"><use href="#i-tool"/></svg>Tools</h3>
+              <ul><li class="skill">Git &amp; GitHub</li><li class="skill">Vite</li><li class="skill">Docker</li><li class="skill">AI-assisted development</li></ul>
             </div>
           </div>
-        </article>
-      </div>
-      <p class="more"><a href="https://github.com/Solatyre" target="_blank" rel="noopener">See everything on GitHub<span class="sr-only"> (opens in a new tab)</span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-    </section>
+        </div>
+      </section>
 
-    <!-- SKILLS -->
-    <section class="section container" id="skills" aria-labelledby="skills-title">
-      <div class="section-head">
-        <p class="kicker">03 / Toolkit</p>
-        <h2 id="skills-title">Skills</h2>
-      </div>
-      <div class="skills">
-        <div class="skill-group">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Frontend</h3>
-          <ul><li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript</li><li>Tailwind CSS</li><li>HTML &amp; CSS</li></ul>
+      <!-- CONTACT -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="contact glass reveal">
+          <div class="watermark" aria-hidden="true">SULAIMAN</div>
+          <p class="kicker">05 / Contact</p>
+          <h2 id="contact-title">Let's build something</h2>
+          <p>Need a website, have a project in mind or a role to fill? Send me a message and I'll reply within one working day.</p>
+          <div class="actions">
+            <a class="btn btn-primary btn-lg" href="mailto:sulaimanbukhsh@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>sulaimanbukhsh@gmail.com</a>
+            <a class="btn btn-ghost btn-lg" href="Sulaiman-Bukhsh-CV.pdf" download><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Download CV<span class="sr-only"> (PDF)</span></a>
+          </div>
         </div>
-        <div class="skill-group">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg>Backend</h3>
-          <ul><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Supabase</li></ul>
-        </div>
-        <div class="skill-group">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Data</h3>
-          <ul><li>PostgreSQL</li><li>Prisma</li><li>Recharts</li><li>Chart.js</li></ul>
-        </div>
-        <div class="skill-group">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-tool"/></svg>Tools</h3>
-          <ul><li>Git &amp; GitHub</li><li>Vite</li><li>ESLint</li><li>AI-assisted development</li></ul>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ABOUT -->
-    <section class="section container" id="about" aria-labelledby="about-title">
-      <div class="section-head">
-        <p class="kicker">04 / About</p>
-        <h2 id="about-title">About me</h2>
-      </div>
-      <div class="about">
-        <!-- PLACEHOLDER: replace with your own bio -->
-        <div class="about-text">
-          <p>I'm a final-year Computer Science student based in Manchester, UK, and a full-stack developer who enjoys turning messy problems into clear, usable software. My projects range from privacy tools that encrypt data in the browser to dashboards that make code quality visible at a glance.</p>
-          <p>Before tech I worked as a property sourcer, which taught me to understand what a client actually needs, communicate clearly and deliver on deadlines. I bring the same approach to freelance work: clear scope, regular updates and clean code you can maintain.</p>
-          <p>I'm currently taking on freelance projects with clients worldwide and open to graduate roles.</p>
-        </div>
-        <dl class="facts">
-          <div><dt>Based in</dt><dd>Manchester, UK</dd></div>
-          <div><dt>Works with</dt><dd>Clients worldwide, remote</dd></div>
-          <div><dt>Focus</dt><dd>Web apps, dashboards, APIs</dd></div>
-          <div><dt>Status</dt><dd>Open to freelance &amp; graduate roles</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section container contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-card">
-      <div class="contact-shader" aria-hidden="true"></div>
-      <p class="kicker">05 / Contact</p>
-      <h2 id="contact-title">Let's build something</h2>
-      <p class="contact-lede">Need a website, have a project in mind or a role to fill? Send me a message and I'll reply within one working day.</p>
-      <div class="hero-actions">
-        <a class="btn" href="mailto:sulaimanbukhsh@gmail.com"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg>sulaimanbukhsh@gmail.com</a>
-        <a class="btn btn-ghost" href="Sulaiman-Bukhsh-CV.pdf" download><svg class="icon icon-sm" aria-hidden="true"><use href="#i-file"/></svg>Download CV<span class="sr-only"> (PDF, 1 page)</span></a>
-      </div>
-      </div>
-    </section>
+      <footer class="site-footer">
+        <p>&copy; <span id="year">2026</span> Sulaiman Bukhsh</p>
+        <ul class="social" aria-label="Profiles">
+          <li><a class="glass" href="https://github.com/Solatyre" rel="me noopener" target="_blank" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+          <li><a class="glass" href="https://www.linkedin.com/in/sulaiman-bukhsh/" rel="me noopener" target="_blank" aria-label="LinkedIn (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          <li><a class="glass" href="mailto:sulaimanbukhsh@gmail.com" aria-label="Email Sulaiman"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+        </ul>
+      </footer>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year">2026</span> Sulaiman Bukhsh</p>
-      <ul class="social" aria-label="Profiles">
-        <li><a href="https://github.com/Solatyre" rel="noopener" target="_blank" aria-label="GitHub profile (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
-        <li><a href="https://www.linkedin.com/in/sulaiman-bukhsh/" rel="me noopener" target="_blank" aria-label="LinkedIn profile (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
-        <li><a href="mailto:sulaimanbukhsh@gmail.com" aria-label="Email Sulaiman"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
-      </ul>
-    </div>
-  </footer>
-
   <script src="script.js" defer></script>
-  <script type="module" src="shaders.js"></script>
 </body>
 </html>
